@@ -407,10 +407,8 @@ const App = () => {
     fetchPlanetsData();
   }, []);
 
-  console.log(characters)
-
   return (
-    <div>
+    <div className="main-wrapper">
       <h1>Characters</h1>
       <FilterPanel planets={planets} />
       <UserList
