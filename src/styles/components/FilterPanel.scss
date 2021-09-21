@@ -3,19 +3,28 @@
   justify-content: space-between;
 
   .filters {
-    width: 75%;
+    width: 68%;
+    position: relative;
 
     .search {
       padding: 7px;
-      font-family: 'Oswald', sans-serif;
+      font-family: "Oswald", sans-serif;
       font-size: 16px;
       font-weight: 400;
       margin-right: 30px;
     }
 
+    img {
+      position: absolute;
+      top: 8px;
+      left: 15%;
+      width: auto;
+      height: 25px;
+    }
+
     .species {
       padding: 7px;
-      font-family: 'Oswald', sans-serif;
+      font-family: "Oswald", sans-serif;
       font-size: 16px;
       font-weight: 400;
       margin-right: 30px;
@@ -24,7 +33,7 @@
 
     .homeworld {
       padding: 7px;
-      font-family: 'Oswald', sans-serif;
+      font-family: "Oswald", sans-serif;
       font-size: 16px;
       font-weight: 400;
       margin-right: 30px;
@@ -33,7 +42,7 @@
 
     .status {
       padding: 7px;
-      font-family: 'Oswald', sans-serif;
+      font-family: "Oswald", sans-serif;
       font-size: 16px;
       font-weight: 400;
       margin-right: 30px;
@@ -42,28 +51,47 @@
   }
 
   .actions {
-    width: 25%;
+    width: 32%;
+    display: flex;
+    justify-content: flex-end;
+
     .deactivateBtn {
       background-color: #0f8bff;
       color: white;
-      padding: 7px;
+      padding: 7px 30px;
       border: none;
-      font-family: 'Oswald', sans-serif;
+      font-family: "Oswald", sans-serif;
       font-size: 16px;
       font-weight: 400;
       border-radius: 3px;
       margin: 0 10px;
+      position: relative;
+      cursor: pointer;
+
+      img {
+        position: absolute;
+        top: 13px;
+        left: 10px;
+      }
     }
 
     .removeBtn {
       background-color: #bc090c;
       color: white;
-      padding: 7px 12px;
-      font-family: 'Oswald', sans-serif;
+      padding: 7px 30px;
+      font-family: "Oswald", sans-serif;
       font-size: 16px;
       font-weight: 400;
       border: none;
       border-radius: 5px;
+      position: relative;
+      cursor: pointer;
+
+      img {
+        position: absolute;
+        top: 13px;
+        left: 10px;
+      }
     }
   }
 }

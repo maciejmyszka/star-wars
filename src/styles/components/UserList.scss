@@ -22,6 +22,16 @@
     .name {
       width: 25%;
       margin-left: 2%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      img {
+        height: 12px;
+        width: auto;
+        margin-right: 30px;
+        cursor: pointer;
+      }
     }
 
     .born,
@@ -29,6 +39,16 @@
     .transport,
     .status-filter {
       width: 15%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      img {
+        height: 12px;
+        width: auto;
+        margin-right: 30px;
+        cursor: pointer;
+      }
     }
   }
 

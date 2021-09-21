@@ -1,16 +1,32 @@
 import React from "react";
 import User from "./User";
+import sort_icon from "../images/sort_icon.png";
 
 const UserList = ({ characters, planets, starships, vehicles }) => {
   return (
     <div className="list-wrapper">
       <div className="params">
         <input type="checkbox" />
-        <h4 className="name">Name</h4>
-        <h4 className="born">Born</h4>
-        <h4 className="world">Homeworld</h4>
-        <h4 className="transport">Vehicles and Starships</h4>
-        <h4 className="status-filter">Status</h4>
+        <div className="name">
+          <h4>Name</h4>
+          <img src={sort_icon} alt="sort icon" />
+        </div>
+        <div className="born">
+          <h4>Born</h4>
+          <img src={sort_icon} alt="sort icon" />
+        </div>
+        <div className="world">
+          <h4>Homeworld</h4>
+          <img src={sort_icon} alt="sort icon" />
+        </div>
+        <div className="transport">
+          <h4>Vehicles and Starships</h4>
+          <img src={sort_icon} alt="sort icon" />
+        </div>
+        <div className="status-filter">
+          <h4>Status</h4>
+          <img src={sort_icon} alt="sort icon" />
+        </div>
         <h4>Actions</h4>
       </div>
       <ul className="user-list">
