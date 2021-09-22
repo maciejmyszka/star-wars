@@ -14,41 +14,15 @@ const App = () => {
   const [usersPage8, setUsersPage8] = useState([]);
   const [usersPage9, setUsersPage9] = useState([]);
 
-  const characters = [
-    ...usersPage1,
-    ...usersPage2,
-    ...usersPage3,
-    ...usersPage4,
-    ...usersPage5,
-    ...usersPage6,
-    ...usersPage7,
-    ...usersPage8,
-    ...usersPage9,
-  ];
-
   const [vehiclesPage1, setVehiclesPage1] = useState([]);
   const [vehiclesPage2, setVehiclesPage2] = useState([]);
   const [vehiclesPage3, setVehiclesPage3] = useState([]);
   const [vehiclesPage4, setVehiclesPage4] = useState([]);
 
-  const vehicles = [
-    ...vehiclesPage1,
-    ...vehiclesPage2,
-    ...vehiclesPage3,
-    ...vehiclesPage4,
-  ];
-
   const [starshipsPage1, setStarshipsPage1] = useState([]);
   const [starshipsPage2, setStarshipsPage2] = useState([]);
   const [starshipsPage3, setStarshipsPage3] = useState([]);
   const [starshipsPage4, setStarshipsPage4] = useState([]);
-
-  const starships = [
-    ...starshipsPage1,
-    ...starshipsPage2,
-    ...starshipsPage3,
-    ...starshipsPage4,
-  ];
 
   const [planetsPage1, setPlanetsPage1] = useState([]);
   const [planetsPage2, setPlanetsPage2] = useState([]);
@@ -56,15 +30,6 @@ const App = () => {
   const [planetsPage4, setPlanetsPage4] = useState([]);
   const [planetsPage5, setPlanetsPage5] = useState([]);
   const [planetsPage6, setPlanetsPage6] = useState([]);
-
-  const planets = [
-    ...planetsPage1,
-    ...planetsPage2,
-    ...planetsPage3,
-    ...planetsPage4,
-    ...planetsPage5,
-    ...planetsPage6,
-  ];
 
   useEffect(() => {
     const peopleAPI1 = "https://swapi.dev/api/people/?page=1";
@@ -406,6 +371,41 @@ const App = () => {
     fetchStarshipData();
     fetchPlanetsData();
   }, []);
+
+  const characters = [
+    ...usersPage1,
+    ...usersPage2,
+    ...usersPage3,
+    ...usersPage4,
+    ...usersPage5,
+    ...usersPage6,
+    ...usersPage7,
+    ...usersPage8,
+    ...usersPage9,
+  ];
+
+  const vehicles = [
+    ...vehiclesPage1,
+    ...vehiclesPage2,
+    ...vehiclesPage3,
+    ...vehiclesPage4,
+  ];
+
+  const starships = [
+    ...starshipsPage1,
+    ...starshipsPage2,
+    ...starshipsPage3,
+    ...starshipsPage4,
+  ];
+
+  const planets = [
+    ...planetsPage1,
+    ...planetsPage2,
+    ...planetsPage3,
+    ...planetsPage4,
+    ...planetsPage5,
+    ...planetsPage6,
+  ];
 
   return (
     <div className="main-wrapper">

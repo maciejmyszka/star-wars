@@ -57,3 +57,29 @@
     margin-top: 3px;
   }
 }
+
+.pageNumberWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+
+  .pageNumber {
+    background-color: white;
+    font-family: "Oswald", sans-serif;
+    font-size: 16px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    margin: 0 5px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    width: 35px;
+  }
+
+  .pageNumber:hover {
+    border-color: black;
+  }
+
+  .active {
+    background-color: #eef1f5;
+  }
+}
