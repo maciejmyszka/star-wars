@@ -73,6 +73,19 @@
     border-radius: 5px;
     padding: 5px 10px;
     width: 35px;
+    position: relative;
+
+    img {
+      position: absolute;
+      height: auto;
+      width: 16px;
+      top: 9px;
+      left: 7px;
+    }
+
+    .next {
+      transform: rotate(180deg);
+    }
   }
 
   .pageNumber:hover {
@@ -80,6 +93,7 @@
   }
 
   .active {
-    background-color: #eef1f5;
+    cursor: unset;
+    border-color: black;
   }
 }
