@@ -4,7 +4,14 @@ import deactive from "../images/minus_icon.png";
 import edit from "../images/edit_icon.png";
 import more from "../images/options_icon.png";
 
-const User = ({ character, planets, starships, vehicles }) => {
+const User = ({
+  character,
+  planets,
+  starships,
+  vehicles,
+  characters,
+  index,
+}) => {
   const [showOptions, setShowOptions] = useState(false);
   const [activeStatus, setActiveStatus] = useState(true);
 
@@ -23,6 +30,11 @@ const User = ({ character, planets, starships, vehicles }) => {
   const activateButton = () => {
     setActiveStatus((prevState) => !prevState);
     setShowOptions((prevState) => !prevState);
+  };
+
+  const removeButton = () => {
+    characters.splice(index, 1);
+    setShowCharacter(false);
   };
 
   return (
@@ -77,7 +89,7 @@ const User = ({ character, planets, starships, vehicles }) => {
               <li onClick={() => activateButton()}>
                 {activeStatus ? "Deactivate" : "Activate"} character
               </li>
-              <li onClick={() => setShowCharacter(prevState => !prevState)}>Remove character</li>
+              <li onClick={() => removeButton()}>Remove character</li>
             </ul>
           )}
         </div>

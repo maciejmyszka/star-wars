@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import User from "./User";
 import sort_icon from "../images/sort_icon.png";
+import previous_icon from "../images/previous.svg";
 
 const UserList = ({ characters, planets, starships, vehicles }) => {
   const [pageNumber, setPageNumber] = useState(1);
@@ -12,9 +13,10 @@ const UserList = ({ characters, planets, starships, vehicles }) => {
   }
 
   let pageNumbersArray = [];
-  for (let i = 1; i < 15; i = i + 1) {
+  for (let i = 1; i < arrayOfCharacters.length; i = i + 1) {
     pageNumbersArray.push(i);
   }
+
 
   return (
     <>
@@ -43,31 +45,44 @@ const UserList = ({ characters, planets, starships, vehicles }) => {
           </div>
           <h4>Actions</h4>
         </div>
+
+        {/* dodawanie postaci */}
         <ul className="user-list">
           {pageNumber === 1
             ? characters
                 .slice(0, 6)
-                .map((character) => (
+                .map((character, index) => (
                   <User
                     key={character.created}
                     character={character}
                     planets={planets}
                     starships={starships}
                     vehicles={vehicles}
+                    characters={characters}
+                    index={index}
                   />
                 ))
-            : arrayOfCharacters[pageNumber].map((character) => (
+            : arrayOfCharacters[pageNumber].map((character, index) => (
                 <User
                   key={character.created}
                   character={character}
                   planets={planets}
                   starships={starships}
                   vehicles={vehicles}
+                  characters={characters}
+                  index={index}
                 />
               ))}
         </ul>
       </div>
       <div className="pageNumberWrapper">
+        <button
+          className={pageNumber === 1 ? "pageNumber active" : "pageNumber"}
+          onClick={() => setPageNumber((prevValue) => prevValue - 1)}
+          disabled={pageNumber === 1 ? true : false}
+        >
+          <img src={previous_icon} alt="previous icon" />
+        </button>
         {pageNumbersArray.map((number) => (
           <button
             className={
@@ -79,6 +94,17 @@ const UserList = ({ characters, planets, starships, vehicles }) => {
             {number}
           </button>
         ))}
+        <button
+          className={
+            pageNumber === arrayOfCharacters.length - 1
+              ? "pageNumber active"
+              : "pageNumber"
+          }
+          onClick={() => setPageNumber((prevValue) => prevValue + 1)}
+          disabled={pageNumber === arrayOfCharacters.length - 1 ? true : false}
+        >
+          <img src={previous_icon} alt="next icon" className="next" />
+        </button>
       </div>
     </>
   );

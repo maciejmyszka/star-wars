@@ -18,7 +18,7 @@ const FilterPanel = ({ planets }) => {
         <select className="homeworld">
           Homeworld
           {planets.map((planet) => (
-            <option value={planet.name}>{planet.name}</option>
+            <option value={planet.name} key={planet.created}>{planet.name}</option>
           ))}
           <option value="defaultValue" disabled selected hidden>Homeworld</option>
         </select>
