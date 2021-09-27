@@ -23,3 +23,5 @@ Instructions
 
 3. Share your project as a GitHub link with us
 4. Good luck
+
+Nie umiem pobrać wszystkich danych z API jedną metodą fetch, więc zrobiłem stan dla każdej ze stron. Niestety okazało się to problematyczne, ponieważ chciałem następnie zebrać te dane i umieścić w głównym state ze wszystkimi postaciami. Nie było to możliwe, więc zrobiłem zmienną characters, do której przypisałem wszystkie strony. To też niestety spowodowało późniejsze problemy z odświażaniem komponentów, więc zdecydowałem się pobrać tylko jedną stronę z postaciami. Dzięki takiemu rozwiązaniu mogę zrobić funkcjonalność aplikacji.
