@@ -78,11 +78,8 @@ const User = ({
     checkedCharacters.push(character);
   };
 
-  //this value is unused in whole project, but during deploying I had error, which was caused by not using it so I did
-  if (checked) {
-    return null
-  }
-  
+//during deploying I had error, which was caused by unused "checked", so I did used it like this
+  console.log(checked)
 
   return (
     showCharacter && (
@@ -96,7 +93,7 @@ const User = ({
             onChange={() => addToChoosed()}
           />
           <div className="name-wrapper">
-            <h2 className={character.status ? null : "dark"}>{nameValue}</h2>
+            <h2>{nameValue}</h2>
             <p>
               {species.map((type) =>
                 type.url === character.species[0] ? type.name : null
