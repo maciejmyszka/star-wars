@@ -10,7 +10,7 @@ const App = () => {
   const [planets, setPlanets] = useState([])
   const [species, setSpecies] = useState([])
   const [characters, setCharacters] = useState([]);
-  const [originalCharacters, setOriginalCharacters] = useState([]);
+  const [originalCharacters, setOriginalCharacters] = useState([])
 
   useEffect(() => {
     const peopleAPI1 = "https://swapi.dev/api/people/?page=1";
@@ -60,6 +60,7 @@ const App = () => {
             data.results[i].checked = false;
           }
           setCharacters((characters) => characters.concat(data.results));
+          setOriginalCharacters((characters) => characters.concat(data.results));
         })
         .catch((error) => console.log(error));
 
@@ -77,6 +78,7 @@ const App = () => {
             data.results[i].checked = false;
           }
           setCharacters((characters) => characters.concat(data.results));
+          setOriginalCharacters((characters) => characters.concat(data.results));
         })
         .catch((error) => console.log(error));
 
@@ -94,6 +96,7 @@ const App = () => {
             data.results[i].checked = false;
           }
           setCharacters((characters) => characters.concat(data.results));
+          setOriginalCharacters((characters) => characters.concat(data.results));
         })
         .catch((error) => console.log(error));
 
@@ -111,6 +114,7 @@ const App = () => {
             data.results[i].checked = false;
           }
           setCharacters((characters) => characters.concat(data.results));
+          setOriginalCharacters((characters) => characters.concat(data.results));
         })
         .catch((error) => console.log(error));
 
@@ -128,6 +132,7 @@ const App = () => {
             data.results[i].checked = false;
           }
           setCharacters((characters) => characters.concat(data.results));
+          setOriginalCharacters((characters) => characters.concat(data.results));
         })
         .catch((error) => console.log(error));
 
@@ -145,6 +150,7 @@ const App = () => {
             data.results[i].checked = false;
           }
           setCharacters((characters) => characters.concat(data.results));
+          setOriginalCharacters((characters) => characters.concat(data.results));
         })
         .catch((error) => console.log(error));
 
@@ -162,6 +168,7 @@ const App = () => {
             data.results[i].checked = false;
           }
           setCharacters((characters) => characters.concat(data.results));
+          setOriginalCharacters((characters) => characters.concat(data.results));
         })
         .catch((error) => console.log(error));
 
@@ -179,6 +186,7 @@ const App = () => {
             data.results[i].checked = false;
           }
           setCharacters((characters) => characters.concat(data.results));
+          setOriginalCharacters((characters) => characters.concat(data.results));
         })
         .catch((error) => console.log(error));
 
@@ -196,6 +204,7 @@ const App = () => {
             data.results[i].checked = false;
           }
           setCharacters((characters) => characters.concat(data.results));
+          setOriginalCharacters((characters) => characters.concat(data.results));
         })
         .catch((error) => console.log(error));
     };
@@ -459,9 +468,9 @@ const App = () => {
         characters={characters}
         species={species}
         setCharacters={setCharacters}
-        originalCharacters={originalCharacters}
-        setOriginalCharacters={setOriginalCharacters}
         checkedCharacters={checkedCharacters}
+        originalCharacters={originalCharacters}
+        setCheckedCharacters={setCheckedCharacters}
       />
       <UserList
         characters={characters}
@@ -470,8 +479,6 @@ const App = () => {
         planets={planets}
         species={species}
         setCharacters={setCharacters}
-        originalCharacters={originalCharacters}
-        setOriginalCharacters={setOriginalCharacters}
         checkedCharacters={checkedCharacters}
         setCheckedCharacters={setCheckedCharacters}
       />

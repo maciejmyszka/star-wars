@@ -86,7 +86,7 @@ const User = ({
         >
           <input
             type="checkbox"
-            checked={checked}
+            checked={character.checked}
             onChange={() => addToChoosed()}
           />
           <div className="name-wrapper">

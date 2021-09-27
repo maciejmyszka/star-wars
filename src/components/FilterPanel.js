@@ -10,6 +10,7 @@ const FilterPanel = ({
   setCharacters,
   originalCharacters,
   checkedCharacters,
+  setCheckedCharacters,
 }) => {
   const [searchInput, setSearchInput] = useState("");
 
@@ -17,12 +18,12 @@ const FilterPanel = ({
     e.preventDefault();
     setSearchInput(e.target.value);
 
-    let filteredCharacters = [];
+    let filteredArr = [];
+
     if (searchInput.length > 1) {
-      characters.map((character) =>
+      characters.filter((character) =>
         character.name.toLowerCase().includes(searchInput.toLowerCase())
-          ? (filteredCharacters.push(character),
-            setCharacters(filteredCharacters))
+          ? (filteredArr.push(character), setCharacters(filteredArr))
           : null
       );
     } else {
@@ -30,10 +31,30 @@ const FilterPanel = ({
     }
   };
 
-  const onClickDeactive = () => {
-    checkedCharacters.map(
-      (character) => ((character.status = false, character.checked = false))
-    );
+  const onClickDeactivate = () => {
+    let newCharacters = characters;
+    for (let i = 0; i < checkedCharacters.length; i++) {
+      const index = characters.indexOf(checkedCharacters[i]);
+      checkedCharacters[i].status = false;
+      checkedCharacters[i].checked = false;
+      newCharacters = characters.filter(
+        (character) => character.name !== checkedCharacters[i].name
+      );
+      newCharacters.splice(index, 0, checkedCharacters[i]);
+    }
+    setCharacters(newCharacters);
+    setCheckedCharacters([]);
+  };
+
+  const onClickDelete = () => {
+    let newCharacters = characters;
+    for (let i = 0; i < checkedCharacters.length; i++) {
+      const index = characters.indexOf(checkedCharacters[i]);
+      checkedCharacters[i].checked = false;
+      newCharacters.splice(index, 1)
+    }
+    setCharacters(newCharacters);
+    setCheckedCharacters([]);
   };
 
   return (
@@ -76,11 +97,11 @@ const FilterPanel = ({
         </select>
       </div>
       <div className="actions">
-        <button className="deactivateBtn" onClick={() => onClickDeactive()}>
+        <button className="deactivateBtn" onClick={() => onClickDeactivate()}>
           <img src={deactivate_icon} alt="deactivate icon" />
           Deactivate characters
         </button>
-        <button className="removeBtn">
+        <button className="removeBtn" onClick={() => onClickDelete()}>
           <img src={delete_icon} alt="delete icon" />
           Remove characters
         </button>

@@ -11,9 +11,8 @@ const UserList = ({
   vehicles,
   setCharacters,
   setCheckedCharacters,
-  checkedCharacters
+  checkedCharacters,
 }) => {
-
   const [pageNumber, setPageNumber] = useState(1);
 
   let arrayOfCharacters = [[]];
@@ -55,23 +54,21 @@ const UserList = ({
           <h4>Actions</h4>
         </div>
         <ul className="user-list">
-          {arrayOfCharacters.length > 1
-            ? arrayOfCharacters[pageNumber].map((character, index) => (
-                <User
-                  key={character.created}
-                  character={character}
-                  species={species}
-                  planets={planets}
-                  starships={starships}
-                  vehicles={vehicles}
-                  characters={characters}
-                  index={index}
-                  setCharacters={setCharacters}
-                  setCheckedCharacters={setCheckedCharacters}
-                  checkedCharacters={checkedCharacters}
-                />
-              ))
-            : null}
+          {characters.map((character, index) => (
+            <User
+              key={character.created}
+              character={character}
+              species={species}
+              planets={planets}
+              starships={starships}
+              vehicles={vehicles}
+              characters={characters}
+              index={index}
+              setCharacters={setCharacters}
+              setCheckedCharacters={setCheckedCharacters}
+              checkedCharacters={checkedCharacters}
+            />
+          ))}
         </ul>
       </div>
       <div className="pageNumberWrapper">
