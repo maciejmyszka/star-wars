@@ -3,6 +3,7 @@ Instructions
 
 2. Based on this figma design (https://www.figma.com/file/nDeahqOhonvgFxe9jN7iea/Task-One?node-id=2%3A1551) and the API from here (https://swapi.dev/) create the Star Wars characters Table.
 	a. The search filter should allow to filter the characters by name or any part of their name
+	
 	Działa
 
 	b. The Species and Homeworld filters should be multiple select dropdowns
