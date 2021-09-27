@@ -78,7 +78,11 @@ const User = ({
     checkedCharacters.push(character);
   };
 
-  console.log(checked)
+  //this value is unused in whole project, but during deploying I had error, which was caused by not using it so I did
+  if (checked) {
+    return null
+  }
+  
 
   return (
     showCharacter && (
