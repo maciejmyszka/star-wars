@@ -78,6 +78,8 @@ const User = ({
     checkedCharacters.push(character);
   };
 
+  console.log(checked)
+
   return (
     showCharacter && (
       <>
