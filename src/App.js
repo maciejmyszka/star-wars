@@ -459,6 +459,7 @@ const App = () => {
   }, []);
 
   const [checkedCharacters, setCheckedCharacters] = useState([]);
+  
 
   return (
     <div className="main-wrapper">

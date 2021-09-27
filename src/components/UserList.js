@@ -14,6 +14,7 @@ const UserList = ({
   checkedCharacters,
 }) => {
   const [pageNumber, setPageNumber] = useState(1);
+  const [checkedAll, setCheckedAll] = useState(false);
 
   let arrayOfCharacters = [[]];
   const size = 6;
@@ -26,11 +27,26 @@ const UserList = ({
     pageNumbersArray.push(i);
   }
 
+  const onClickCheckedAll = () => {
+    setCheckedAll((prevState) => !prevState);
+
+    if (checkedAll) {
+      characters.forEach((character) => (character.checked = false));
+    } else {
+      characters.forEach((character) => (character.checked = true));
+    }
+    setCheckedCharacters(characters);
+  };
+
   return (
     <>
       <div className="list-wrapper">
         <div className="params">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            value={checkedAll}
+            onChange={() => onClickCheckedAll()}
+          />
           <div className="name">
             <h4>Name</h4>
             <img src={sort_icon} alt="sort icon" />

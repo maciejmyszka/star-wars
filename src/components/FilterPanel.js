@@ -51,7 +51,7 @@ const FilterPanel = ({
     for (let i = 0; i < checkedCharacters.length; i++) {
       const index = characters.indexOf(checkedCharacters[i]);
       checkedCharacters[i].checked = false;
-      newCharacters.splice(index, 1)
+      newCharacters.splice(index, 1);
     }
     setCharacters(newCharacters);
     setCheckedCharacters([]);
