@@ -3,7 +3,17 @@ import User from "./User";
 import sort_icon from "../images/sort_icon.png";
 import previous_icon from "../images/previous.svg";
 
-const UserList = ({ characters, planets, starships, vehicles }) => {
+const UserList = ({
+  characters,
+  planets,
+  species,
+  starships,
+  vehicles,
+  setCharacters,
+  setCheckedCharacters,
+  checkedCharacters
+}) => {
+
   const [pageNumber, setPageNumber] = useState(1);
 
   let arrayOfCharacters = [[]];
@@ -16,7 +26,6 @@ const UserList = ({ characters, planets, starships, vehicles }) => {
   for (let i = 1; i < arrayOfCharacters.length; i = i + 1) {
     pageNumbersArray.push(i);
   }
-
 
   return (
     <>
@@ -45,34 +54,24 @@ const UserList = ({ characters, planets, starships, vehicles }) => {
           </div>
           <h4>Actions</h4>
         </div>
-
-        {/* dodawanie postaci */}
         <ul className="user-list">
-          {pageNumber === 1
-            ? characters
-                .slice(0, 6)
-                .map((character, index) => (
-                  <User
-                    key={character.created}
-                    character={character}
-                    planets={planets}
-                    starships={starships}
-                    vehicles={vehicles}
-                    characters={characters}
-                    index={index}
-                  />
-                ))
-            : arrayOfCharacters[pageNumber].map((character, index) => (
+          {arrayOfCharacters.length > 1
+            ? arrayOfCharacters[pageNumber].map((character, index) => (
                 <User
                   key={character.created}
                   character={character}
+                  species={species}
                   planets={planets}
                   starships={starships}
                   vehicles={vehicles}
                   characters={characters}
                   index={index}
+                  setCharacters={setCharacters}
+                  setCheckedCharacters={setCheckedCharacters}
+                  checkedCharacters={checkedCharacters}
                 />
-              ))}
+              ))
+            : null}
         </ul>
       </div>
       <div className="pageNumberWrapper">

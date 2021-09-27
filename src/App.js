@@ -4,15 +4,17 @@ import React, { useEffect, useState } from "react";
 import FilterPanel from "./components/FilterPanel";
 
 const App = () => {
-  const [usersPage1, setUsersPage1] = useState([]);
-  const [usersPage2, setUsersPage2] = useState([]);
-  const [usersPage3, setUsersPage3] = useState([]);
-  const [usersPage4, setUsersPage4] = useState([]);
-  const [usersPage5, setUsersPage5] = useState([]);
-  const [usersPage6, setUsersPage6] = useState([]);
-  const [usersPage7, setUsersPage7] = useState([]);
-  const [usersPage8, setUsersPage8] = useState([]);
-  const [usersPage9, setUsersPage9] = useState([]);
+  // Nie umiem pobrać wszystkich danych z API jedną metodą fetch, więc zrobiłem stan dla każdej ze stron. Niestety okazało się to problematyczne, ponieważ chciałem następnie zebrać te dane i umieścić w głównym state ze wszystkimi postaciami. Nie było to możliwe, więc zrobiłem zmienną characters, do której przypisałem wszystkie strony. To też niestety spowodowało późniejsze problemy z odświażaniem komponentów, więc zdecydowałem się pobrać tylko jedną stronę z postaciami. Dzięki takiemu rozwiązaniu mogę zrobić funkcjonalność aplikacji.
+
+  // const [usersPage1, setUsersPage1] = useState([]);
+  // const [usersPage2, setUsersPage2] = useState([]);
+  // const [usersPage3, setUsersPage3] = useState([]);
+  // const [usersPage4, setUsersPage4] = useState([]);
+  // const [usersPage5, setUsersPage5] = useState([]);
+  // const [usersPage6, setUsersPage6] = useState([]);
+  // const [usersPage7, setUsersPage7] = useState([]);
+  // const [usersPage8, setUsersPage8] = useState([]);
+  // const [usersPage9, setUsersPage9] = useState([]);
 
   const [vehiclesPage1, setVehiclesPage1] = useState([]);
   const [vehiclesPage2, setVehiclesPage2] = useState([]);
@@ -31,16 +33,26 @@ const App = () => {
   const [planetsPage5, setPlanetsPage5] = useState([]);
   const [planetsPage6, setPlanetsPage6] = useState([]);
 
+  const [speciesPage1, setSpeciesPage1] = useState([]);
+  const [speciesPage2, setSpeciesPage2] = useState([]);
+  const [speciesPage3, setSpeciesPage3] = useState([]);
+  const [speciesPage4, setSpeciesPage4] = useState([]);
+
+  
+
+  const [characters, setCharacters] = useState([]);
+  const [originalCharacters, setOriginalCharacters] = useState([]);
+
   useEffect(() => {
     const peopleAPI1 = "https://swapi.dev/api/people/?page=1";
-    const peopleAPI2 = "https://swapi.dev/api/people/?page=2";
-    const peopleAPI3 = "https://swapi.dev/api/people/?page=3";
-    const peopleAPI4 = "https://swapi.dev/api/people/?page=4";
-    const peopleAPI5 = "https://swapi.dev/api/people/?page=5";
-    const peopleAPI6 = "https://swapi.dev/api/people/?page=6";
-    const peopleAPI7 = "https://swapi.dev/api/people/?page=7";
-    const peopleAPI8 = "https://swapi.dev/api/people/?page=8";
-    const peopleAPI9 = "https://swapi.dev/api/people/?page=9";
+    // const peopleAPI2 = "https://swapi.dev/api/people/?page=2";
+    // const peopleAPI3 = "https://swapi.dev/api/people/?page=3";
+    // const peopleAPI4 = "https://swapi.dev/api/people/?page=4";
+    // const peopleAPI5 = "https://swapi.dev/api/people/?page=5";
+    // const peopleAPI6 = "https://swapi.dev/api/people/?page=6";
+    // const peopleAPI7 = "https://swapi.dev/api/people/?page=7";
+    // const peopleAPI8 = "https://swapi.dev/api/people/?page=8";
+    // const peopleAPI9 = "https://swapi.dev/api/people/?page=9";
 
     const vehiclesAPI1 = "https://swapi.dev/api/vehicles/?page=1";
     const vehiclesAPI2 = "https://swapi.dev/api/vehicles/?page=2";
@@ -59,124 +71,156 @@ const App = () => {
     const starshipsAPI3 = "https://swapi.dev/api/starships/?page=3";
     const starshipsAPI4 = "https://swapi.dev/api/starships/?page=4";
 
-    const fetchPeopleData = () => {
-      fetch(peopleAPI1)
-        .then((response) => {
-          if (response.ok) {
-            return response;
-          }
-          throw Error(response.status);
-        })
-        .then((response) => response.json())
-        .then((data) => {
-          setUsersPage1(data.results);
-        })
-        .catch((error) => console.log(error));
+    const speciesAPI1 = "https://swapi.dev/api/species/?page=1";
+    const speciesAPI2 = "https://swapi.dev/api/species/?page=2";
+    const speciesAPI3 = "https://swapi.dev/api/species/?page=3";
+    const speciesAPI4 = "https://swapi.dev/api/species/?page=4";
 
-      fetch(peopleAPI2)
-        .then((response) => {
-          if (response.ok) {
-            return response;
-          }
-          throw Error(response.status);
-        })
-        .then((response) => response.json())
-        .then((data) => {
-          setUsersPage2(data.results);
-        })
-        .catch((error) => console.log(error));
+    // const fetchPeopleData = () => {
+    //   fetch(peopleAPI1)
+    //     .then((response) => {
+    //       if (response.ok) {
+    //         return response;
+    //       }
+    //       throw Error(response.status);
+    //     })
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //       for (let i = 0; i < data.results.length; i++) {
+    //         data.results[i].active = true;
+    //       }
+    //       setUsersPage1(data.results);
+    //     })
+    //     .catch((error) => console.log(error));
 
-      fetch(peopleAPI3)
-        .then((response) => {
-          if (response.ok) {
-            return response;
-          }
-          throw Error(response.status);
-        })
-        .then((response) => response.json())
-        .then((data) => {
-          setUsersPage3(data.results);
-        })
-        .catch((error) => console.log(error));
+    //   fetch(peopleAPI2)
+    //     .then((response) => {
+    //       if (response.ok) {
+    //         return response;
+    //       }
+    //       throw Error(response.status);
+    //     })
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //       for (let i = 0; i < data.results.length; i++) {
+    //         data.results[i].active = true;
+    //       }
+    //       setUsersPage2(data.results);
+    //     })
+    //     .catch((error) => console.log(error));
 
-      fetch(peopleAPI4)
-        .then((response) => {
-          if (response.ok) {
-            return response;
-          }
-          throw Error(response.status);
-        })
-        .then((response) => response.json())
-        .then((data) => {
-          setUsersPage4(data.results);
-        })
-        .catch((error) => console.log(error));
+    //   fetch(peopleAPI3)
+    //     .then((response) => {
+    //       if (response.ok) {
+    //         return response;
+    //       }
+    //       throw Error(response.status);
+    //     })
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //       for (let i = 0; i < data.results.length; i++) {
+    //         data.results[i].active = true;
+    //       }
+    //       setUsersPage3(data.results);
+    //     })
+    //     .catch((error) => console.log(error));
 
-      fetch(peopleAPI5)
-        .then((response) => {
-          if (response.ok) {
-            return response;
-          }
-          throw Error(response.status);
-        })
-        .then((response) => response.json())
-        .then((data) => {
-          setUsersPage5(data.results);
-        })
-        .catch((error) => console.log(error));
+    //   fetch(peopleAPI4)
+    //     .then((response) => {
+    //       if (response.ok) {
+    //         return response;
+    //       }
+    //       throw Error(response.status);
+    //     })
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //       for (let i = 0; i < data.results.length; i++) {
+    //         data.results[i].active = true;
+    //       }
+    //       setUsersPage4(data.results);
+    //     })
+    //     .catch((error) => console.log(error));
 
-      fetch(peopleAPI6)
-        .then((response) => {
-          if (response.ok) {
-            return response;
-          }
-          throw Error(response.status);
-        })
-        .then((response) => response.json())
-        .then((data) => {
-          setUsersPage6(data.results);
-        })
-        .catch((error) => console.log(error));
+    //   fetch(peopleAPI5)
+    //     .then((response) => {
+    //       if (response.ok) {
+    //         return response;
+    //       }
+    //       throw Error(response.status);
+    //     })
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //       for (let i = 0; i < data.results.length; i++) {
+    //         data.results[i].active = true;
+    //       }
+    //       setUsersPage5(data.results);
+    //     })
+    //     .catch((error) => console.log(error));
 
-      fetch(peopleAPI7)
-        .then((response) => {
-          if (response.ok) {
-            return response;
-          }
-          throw Error(response.status);
-        })
-        .then((response) => response.json())
-        .then((data) => {
-          setUsersPage7(data.results);
-        })
-        .catch((error) => console.log(error));
+    //   fetch(peopleAPI6)
+    //     .then((response) => {
+    //       if (response.ok) {
+    //         return response;
+    //       }
+    //       throw Error(response.status);
+    //     })
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //       for (let i = 0; i < data.results.length; i++) {
+    //         data.results[i].active = true;
+    //       }
+    //       setUsersPage6(data.results);
+    //     })
+    //     .catch((error) => console.log(error));
 
-      fetch(peopleAPI8)
-        .then((response) => {
-          if (response.ok) {
-            return response;
-          }
-          throw Error(response.status);
-        })
-        .then((response) => response.json())
-        .then((data) => {
-          setUsersPage8(data.results);
-        })
-        .catch((error) => console.log(error));
+    //   fetch(peopleAPI7)
+    //     .then((response) => {
+    //       if (response.ok) {
+    //         return response;
+    //       }
+    //       throw Error(response.status);
+    //     })
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //       for (let i = 0; i < data.results.length; i++) {
+    //         data.results[i].active = true;
+    //       }
+    //       setUsersPage7(data.results);
+    //     })
+    //     .catch((error) => console.log(error));
 
-      fetch(peopleAPI9)
-        .then((response) => {
-          if (response.ok) {
-            return response;
-          }
-          throw Error(response.status);
-        })
-        .then((response) => response.json())
-        .then((data) => {
-          setUsersPage9(data.results);
-        })
-        .catch((error) => console.log(error));
-    };
+    //   fetch(peopleAPI8)
+    //     .then((response) => {
+    //       if (response.ok) {
+    //         return response;
+    //       }
+    //       throw Error(response.status);
+    //     })
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //       for (let i = 0; i < data.results.length; i++) {
+    //         data.results[i].active = true;
+    //       }
+    //       setUsersPage8(data.results);
+    //     })
+    //     .catch((error) => console.log(error));
+
+    //   fetch(peopleAPI9)
+    //     .then((response) => {
+    //       if (response.ok) {
+    //         return response;
+    //       }
+    //       throw Error(response.status);
+    //     })
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //       for (let i = 0; i < data.results.length; i++) {
+    //         data.results[i].active = true;
+    //       }
+    //       setUsersPage9(data.results);
+    //     })
+    //     .catch((error) => console.log(error));
+    // };
 
     const fetchVehiclesData = () => {
       fetch(vehiclesAPI1)
@@ -366,23 +410,97 @@ const App = () => {
         .catch((error) => console.log(error));
     };
 
-    fetchPeopleData();
+    const fetchSpeciesData = () => {
+      fetch(speciesAPI1)
+        .then((response) => {
+          if (response.ok) {
+            return response;
+          }
+          throw Error(response.status);
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          setSpeciesPage1(data.results);
+        })
+        .catch((error) => console.log(error));
+
+        fetch(speciesAPI2)
+        .then((response) => {
+          if (response.ok) {
+            return response;
+          }
+          throw Error(response.status);
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          setSpeciesPage2(data.results);
+        })
+        .catch((error) => console.log(error));
+
+        fetch(speciesAPI3)
+        .then((response) => {
+          if (response.ok) {
+            return response;
+          }
+          throw Error(response.status);
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          setSpeciesPage3(data.results);
+        })
+        .catch((error) => console.log(error));
+
+        fetch(speciesAPI4)
+        .then((response) => {
+          if (response.ok) {
+            return response;
+          }
+          throw Error(response.status);
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          setSpeciesPage4(data.results);
+        })
+        .catch((error) => console.log(error));
+    }
+
+    fetch(peopleAPI1)
+      .then((response) => {
+        if (response.ok) {
+          return response;
+        }
+        throw Error(response.status);
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        for (let i = 0; i < data.results.length; i++) {
+          data.results[i].status = true;
+          data.results[i].checked = false;
+        }
+        setCharacters(data.results);
+        setOriginalCharacters(data.results);
+      })
+      .catch((error) => console.log(error));
+
+
+    // fetchPeopleData();
     fetchVehiclesData();
     fetchStarshipData();
     fetchPlanetsData();
+    fetchSpeciesData();
   }, []);
 
-  const characters = [
-    ...usersPage1,
-    ...usersPage2,
-    ...usersPage3,
-    ...usersPage4,
-    ...usersPage5,
-    ...usersPage6,
-    ...usersPage7,
-    ...usersPage8,
-    ...usersPage9,
-  ];
+  // const characters = [
+  //   ...usersPage1,
+  //   ...usersPage2,
+  //   ...usersPage3,
+  //   ...usersPage4,
+  //   ...usersPage5,
+  //   ...usersPage6,
+  //   ...usersPage7,
+  //   ...usersPage8,
+  //   ...usersPage9,
+  // ];
 
   const vehicles = [
     ...vehiclesPage1,
@@ -407,15 +525,38 @@ const App = () => {
     ...planetsPage6,
   ];
 
+  const species = [
+    ...speciesPage1,
+    ...speciesPage2,
+    ...speciesPage3,
+    ...speciesPage4,
+  ]
+
+  const [checkedCharacters, setCheckedCharacters] = useState([])
+
   return (
     <div className="main-wrapper">
       <h1>Characters</h1>
-      <FilterPanel planets={planets} />
+      <FilterPanel
+        planets={planets}
+        characters={characters}
+        species={species}
+        setCharacters={setCharacters}
+        originalCharacters={originalCharacters}
+        setOriginalCharacters={setOriginalCharacters}
+        checkedCharacters={checkedCharacters}
+      />
       <UserList
         characters={characters}
         vehicles={vehicles}
         starships={starships}
         planets={planets}
+        species={species}
+        setCharacters={setCharacters}
+        originalCharacters={originalCharacters}
+        setOriginalCharacters={setOriginalCharacters}
+        checkedCharacters={checkedCharacters}
+        setCheckedCharacters={setCheckedCharacters}
       />
     </div>
   );

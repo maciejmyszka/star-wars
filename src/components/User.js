@@ -7,19 +7,22 @@ import more from "../images/options_icon.png";
 const User = ({
   character,
   planets,
+  species,
   starships,
   vehicles,
   characters,
   index,
+  setCharacters,
+  checkedCharacters,
+  setCheckedCharacters,
 }) => {
   const [showOptions, setShowOptions] = useState(false);
-  const [activeStatus, setActiveStatus] = useState(true);
-
   const [changeNameStatus, setChangeNameStatus] = useState(false);
   const [nameValue, setNameValue] = useState(character.name);
   const [newName, setNewName] = useState();
-
   const [showCharacter, setShowCharacter] = useState(true);
+
+  const [checked, setChecked] = useState(character.checked);
 
   const changeNameButton = () => {
     setNameValue(newName);
@@ -28,35 +31,121 @@ const User = ({
   };
 
   const activateButton = () => {
-    setActiveStatus((prevState) => !prevState);
+    if (character.status === true) {
+      character.status = false;
+      let allCharacters = characters;
+      setCharacters(allCharacters);
+    } else {
+      character.status = true;
+      let allCharacters = characters;
+      setCharacters(allCharacters);
+    }
     setShowOptions((prevState) => !prevState);
   };
 
   const removeButton = () => {
-    characters.splice(index, 1);
+    let charactersCopy = characters;
+    charactersCopy.splice(index, 1);
+    setCharacters(charactersCopy);
     setShowCharacter(false);
+  };
+
+  const vehiclesNumber = character.vehicles.length + character.starships.length;
+  const vehiclesArr = [...character.vehicles, ...character.starships];
+
+  let firstNumber;
+  let secondNumber;
+
+  if (vehiclesArr.length > 2) {
+    do {
+      firstNumber = Math.floor(Math.random() * vehiclesNumber);
+      secondNumber = Math.floor(Math.random() * vehiclesNumber);
+    } while (firstNumber === secondNumber);
+  }
+
+  const addToChoosed = () => {
+    setChecked((prevState) => !prevState);
+
+    if (character.checked === true) {
+      character.checked = false;
+      const filteredArr = checkedCharacters.filter(
+        (person) => person.name !== character.name
+      );
+      setCheckedCharacters(filteredArr);
+    } else if (character.checked === false) {
+      character.checked = true;
+    }
+    checkedCharacters.push(character);
   };
 
   return (
     showCharacter && (
       <>
-        <div className={activeStatus ? "characterItem" : "characterItem dark"}>
-          <input type="checkbox" />
-          <h2 className={activeStatus ? null : "dark"}>{nameValue}</h2>
+        <div
+          className={character.status ? "characterItem" : "characterItem dark"}
+        >
+          <input
+            type="checkbox"
+            checked={checked}
+            onChange={() => addToChoosed()}
+          />
+          <div className="name-wrapper">
+            <h2 className={character.status ? null : "dark"}>{nameValue}</h2>
+            <p>
+              {species.map((type) =>
+                type.url === character.species[0] ? type.name : null
+              )}
+              {character.species.length === 0 && "Human"}
+            </p>
+          </div>
           <p className="birthday">{character.birth_year}</p>
           <p className="planet">
             {planets.map((planet) =>
               planet.url === character.homeworld ? planet.name : null
             )}
           </p>
-          <p className="starships">
-            {vehicles.map((vehicle) =>
-              vehicle.url === character.vehicles[1] ? vehicle.name : null
-            )}
-          </p>
+          {vehiclesNumber <= 2 ? (
+            <div className="starships">
+              <p className="singleVehicle">
+                {vehicles.map((vehicle) =>
+                  vehicle.url === character.vehicles[0] ? vehicle.name : null
+                )}
+              </p>
+              <p className="singleVehicle">
+                {starships.map((starship) =>
+                  starship.url === character.starships[0] ? starship.name : null
+                )}
+              </p>
+            </div>
+          ) : (
+            <div className="starships">
+              <p className="singleVehicle">
+                {vehicles.map((vehicle) =>
+                  vehicle.url === vehiclesArr[firstNumber] ? vehicle.name : null
+                )}
+                {starships.map((starship) =>
+                  starship.url === vehiclesArr[firstNumber]
+                    ? starship.name
+                    : null
+                )}
+              </p>
+              <p className="singleVehicle">
+                {vehicles.map((vehicle) =>
+                  vehicle.url === vehiclesArr[secondNumber]
+                    ? vehicle.name
+                    : null
+                )}
+                {starships.map((starship) =>
+                  starship.url === vehiclesArr[secondNumber]
+                    ? starship.name
+                    : null
+                )}
+              </p>
+            </div>
+          )}
           <p className="status">
-            <img src={activeStatus ? active : deactive} alt="active" />
-            {activeStatus ? "Active" : "Deactivated"}
+            <img src={character.status ? active : deactive} alt="active" />
+            {character.status ? "Active" : "Deactivated"}
           </p>
           <div className="actions">
             <img
@@ -87,7 +176,7 @@ const User = ({
           {showOptions && (
             <ul>
               <li onClick={() => activateButton()}>
-                {activeStatus ? "Deactivate" : "Activate"} character
+                {character.status ? "Deactivate" : "Activate"} character
               </li>
               <li onClick={() => removeButton()}>Remove character</li>
             </ul>
