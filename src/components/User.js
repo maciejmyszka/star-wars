@@ -1,57 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import active from "../images/check_icon.png";
 import deactive from "../images/minus_icon.png";
 import edit from "../images/edit_icon.png";
 import more from "../images/options_icon.png";
+import { CharactersContext } from "../CharactersContext";
+import EditPanel from "./EditPanel";
 
-const User = ({
-  character,
-  planets,
-  species,
-  starships,
-  vehicles,
-  characters,
-  index,
-  setCharacters,
-  checkedCharacters,
-  setCheckedCharacters,
-}) => {
+const User = ({ character }) => {
+  const {
+    planets,
+    species,
+    starships,
+    vehicles,
+    checkedCharacters,
+    setCheckedCharacters,
+  } = useContext(CharactersContext);
+
   const [showOptions, setShowOptions] = useState(false);
   const [changeNameStatus, setChangeNameStatus] = useState(false);
   const [nameValue, setNameValue] = useState(character.name);
-  const [newName, setNewName] = useState();
-
   const [checked, setChecked] = useState(character.checked);
-
-  const changeNameButton = () => {
-    setNameValue(newName);
-    setNewName("");
-    setChangeNameStatus(false);
-  };
-
-  const activateButton = () => {
-    if (character.status === true) {
-      character.status = false;
-      let allCharacters = characters;
-      setCharacters(allCharacters);
-    } else {
-      character.status = true;
-      let allCharacters = characters;
-      setCharacters(allCharacters);
-    }
-    setShowOptions((prevState) => !prevState);
-  };
-
-  const removeButton = () => {
-    setCharacters(characters.filter(person => person.name !== character.name));
-  };
 
   const vehiclesNumber = character.vehicles.length + character.starships.length;
   const vehiclesArr = [...character.vehicles, ...character.starships];
 
   let firstNumber;
   let secondNumber;
-
+  
   if (vehiclesArr.length > 2) {
     do {
       firstNumber = Math.floor(Math.random() * vehiclesNumber);
@@ -75,13 +50,11 @@ const User = ({
   };
 
   //during deploying I had error, which was caused by unused "checked", so I did used it like this
-  console.log(checked)
+  console.log(checked);
 
   return (
     <>
-      <div
-        className={character.status ? "characterItem" : "characterItem dark"}
-      >
+      <div className={character.status ? "characterItem" : "characterItem dark"}>
         <input
           type="checkbox"
           checked={character.checked}
@@ -154,28 +127,14 @@ const User = ({
           />
         </div>
       </div>
-      <div className="edit-user">
-        {changeNameStatus && (
-          <div className="change-name">
-            <input
-              type="text"
-              placeholder="Change name"
-              value={newName}
-              onChange={(e) => setNewName(e.target.value)}
-            />
-            <button onClick={() => changeNameButton()}>Change</button>
-          </div>
-        )}
-
-        {showOptions && (
-          <ul>
-            <li onClick={() => activateButton()}>
-              {character.status ? "Deactivate" : "Activate"} character
-            </li>
-            <li onClick={() => removeButton()}>Remove character</li>
-          </ul>
-        )}
-      </div>
+      <EditPanel
+        changeNameStatus={changeNameStatus}
+        nameValue={nameValue}
+        setNameValue={setNameValue}
+        character={character}
+        showOptions={showOptions}
+        setShowOptions={setShowOptions}
+      />
     </>
   );
 };

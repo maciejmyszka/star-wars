@@ -2,15 +2,17 @@ import "./App.css";
 import UserList from "./components/UserList";
 import React, { useEffect, useState } from "react";
 import FilterPanel from "./components/FilterPanel";
+import { CharactersContext, defaultObject } from "./CharactersContext";
 
 const App = () => {
-
-  const [starships, setStarships] = useState([])
-  const [vehicles, setVehicles] = useState([])
-  const [planets, setPlanets] = useState([])
-  const [species, setSpecies] = useState([])
-  const [characters, setCharacters] = useState([]);
-  const [originalCharacters, setOriginalCharacters] = useState([])
+  const [starships, setStarships] = useState(defaultObject.starships);
+  const [vehicles, setVehicles] = useState(defaultObject.vehicles);
+  const [planets, setPlanets] = useState(defaultObject.planets);
+  const [species, setSpecies] = useState(defaultObject.species);
+  const [characters, setCharacters] = useState(defaultObject.characters);
+  const [originalCharacters, setOriginalCharacters] = useState(defaultObject.originalCharacters);
+  const [checkedCharacters, setCheckedCharacters] = useState(defaultObject.checkedCharacters);
+  const [checkedAll, setCheckedAll] = useState(defaultObject.checkedAll);
 
   useEffect(() => {
     const peopleAPI1 = "https://swapi.dev/api/people/?page=1";
@@ -60,7 +62,9 @@ const App = () => {
             data.results[i].checked = false;
           }
           setCharacters((characters) => characters.concat(data.results));
-          setOriginalCharacters((characters) => characters.concat(data.results));
+          setOriginalCharacters((characters) =>
+            characters.concat(data.results)
+          );
         })
         .catch((error) => console.log(error));
 
@@ -78,7 +82,9 @@ const App = () => {
             data.results[i].checked = false;
           }
           setCharacters((characters) => characters.concat(data.results));
-          setOriginalCharacters((characters) => characters.concat(data.results));
+          setOriginalCharacters((characters) =>
+            characters.concat(data.results)
+          );
         })
         .catch((error) => console.log(error));
 
@@ -96,7 +102,9 @@ const App = () => {
             data.results[i].checked = false;
           }
           setCharacters((characters) => characters.concat(data.results));
-          setOriginalCharacters((characters) => characters.concat(data.results));
+          setOriginalCharacters((characters) =>
+            characters.concat(data.results)
+          );
         })
         .catch((error) => console.log(error));
 
@@ -114,7 +122,9 @@ const App = () => {
             data.results[i].checked = false;
           }
           setCharacters((characters) => characters.concat(data.results));
-          setOriginalCharacters((characters) => characters.concat(data.results));
+          setOriginalCharacters((characters) =>
+            characters.concat(data.results)
+          );
         })
         .catch((error) => console.log(error));
 
@@ -132,7 +142,9 @@ const App = () => {
             data.results[i].checked = false;
           }
           setCharacters((characters) => characters.concat(data.results));
-          setOriginalCharacters((characters) => characters.concat(data.results));
+          setOriginalCharacters((characters) =>
+            characters.concat(data.results)
+          );
         })
         .catch((error) => console.log(error));
 
@@ -150,7 +162,9 @@ const App = () => {
             data.results[i].checked = false;
           }
           setCharacters((characters) => characters.concat(data.results));
-          setOriginalCharacters((characters) => characters.concat(data.results));
+          setOriginalCharacters((characters) =>
+            characters.concat(data.results)
+          );
         })
         .catch((error) => console.log(error));
 
@@ -168,7 +182,9 @@ const App = () => {
             data.results[i].checked = false;
           }
           setCharacters((characters) => characters.concat(data.results));
-          setOriginalCharacters((characters) => characters.concat(data.results));
+          setOriginalCharacters((characters) =>
+            characters.concat(data.results)
+          );
         })
         .catch((error) => console.log(error));
 
@@ -186,7 +202,9 @@ const App = () => {
             data.results[i].checked = false;
           }
           setCharacters((characters) => characters.concat(data.results));
-          setOriginalCharacters((characters) => characters.concat(data.results));
+          setOriginalCharacters((characters) =>
+            characters.concat(data.results)
+          );
         })
         .catch((error) => console.log(error));
 
@@ -204,7 +222,9 @@ const App = () => {
             data.results[i].checked = false;
           }
           setCharacters((characters) => characters.concat(data.results));
-          setOriginalCharacters((characters) => characters.concat(data.results));
+          setOriginalCharacters((characters) =>
+            characters.concat(data.results)
+          );
         })
         .catch((error) => console.log(error));
     };
@@ -219,7 +239,7 @@ const App = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-          setVehicles(vehicles => vehicles.concat(data.results));
+          setVehicles((vehicles) => vehicles.concat(data.results));
         })
         .catch((error) => console.log(error));
 
@@ -232,7 +252,7 @@ const App = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-          setVehicles(vehicles => vehicles.concat(data.results));
+          setVehicles((vehicles) => vehicles.concat(data.results));
         })
         .catch((error) => console.log(error));
 
@@ -245,7 +265,7 @@ const App = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-          setVehicles(vehicles => vehicles.concat(data.results));
+          setVehicles((vehicles) => vehicles.concat(data.results));
         })
         .catch((error) => console.log(error));
 
@@ -258,7 +278,7 @@ const App = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-          setVehicles(vehicles => vehicles.concat(data.results));
+          setVehicles((vehicles) => vehicles.concat(data.results));
         })
         .catch((error) => console.log(error));
     };
@@ -273,7 +293,7 @@ const App = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-          setStarships(starships => starships.concat(data.results));
+          setStarships((starships) => starships.concat(data.results));
         })
         .catch((error) => console.log(error));
 
@@ -286,7 +306,7 @@ const App = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-          setStarships(starships => starships.concat(data.results));
+          setStarships((starships) => starships.concat(data.results));
         })
         .catch((error) => console.log(error));
 
@@ -299,7 +319,7 @@ const App = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-          setStarships(starships => starships.concat(data.results));
+          setStarships((starships) => starships.concat(data.results));
         })
         .catch((error) => console.log(error));
 
@@ -312,7 +332,7 @@ const App = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-          setStarships(starships => starships.concat(data.results));
+          setStarships((starships) => starships.concat(data.results));
         })
         .catch((error) => console.log(error));
     };
@@ -327,7 +347,7 @@ const App = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-          setPlanets(planets => planets.concat(data.results));
+          setPlanets((planets) => planets.concat(data.results));
         })
         .catch((error) => console.log(error));
 
@@ -340,7 +360,7 @@ const App = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-          setPlanets(planets => planets.concat(data.results));
+          setPlanets((planets) => planets.concat(data.results));
         })
         .catch((error) => console.log(error));
 
@@ -353,7 +373,7 @@ const App = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-          setPlanets(planets => planets.concat(data.results));
+          setPlanets((planets) => planets.concat(data.results));
         })
         .catch((error) => console.log(error));
 
@@ -366,7 +386,7 @@ const App = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-          setPlanets(planets => planets.concat(data.results));
+          setPlanets((planets) => planets.concat(data.results));
         })
         .catch((error) => console.log(error));
 
@@ -379,7 +399,7 @@ const App = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-          setPlanets(planets => planets.concat(data.results));
+          setPlanets((planets) => planets.concat(data.results));
         })
         .catch((error) => console.log(error));
 
@@ -392,7 +412,7 @@ const App = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-          setPlanets(planets => planets.concat(data.results));
+          setPlanets((planets) => planets.concat(data.results));
         })
         .catch((error) => console.log(error));
     };
@@ -407,7 +427,7 @@ const App = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-          setSpecies(species => species.concat(data.results));
+          setSpecies((species) => species.concat(data.results));
         })
         .catch((error) => console.log(error));
 
@@ -420,7 +440,7 @@ const App = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-          setSpecies(species => species.concat(data.results));
+          setSpecies((species) => species.concat(data.results));
         })
         .catch((error) => console.log(error));
 
@@ -433,7 +453,7 @@ const App = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-          setSpecies(species => species.concat(data.results));
+          setSpecies((species) => species.concat(data.results));
         })
         .catch((error) => console.log(error));
 
@@ -446,7 +466,7 @@ const App = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-          setSpecies(species => species.concat(data.results));
+          setSpecies((species) => species.concat(data.results));
         })
         .catch((error) => console.log(error));
     };
@@ -458,31 +478,33 @@ const App = () => {
     fetchSpeciesData();
   }, []);
 
-  const [checkedCharacters, setCheckedCharacters] = useState([]);
-
   return (
-    <div className="main-wrapper">
-      <h1>Characters</h1>
-      <FilterPanel
-        planets={planets}
-        characters={characters}
-        species={species}
-        setCharacters={setCharacters}
-        checkedCharacters={checkedCharacters}
-        originalCharacters={originalCharacters}
-        setCheckedCharacters={setCheckedCharacters}
-      />
-      <UserList
-        characters={characters}
-        vehicles={vehicles}
-        starships={starships}
-        planets={planets}
-        species={species}
-        setCharacters={setCharacters}
-        checkedCharacters={checkedCharacters}
-        setCheckedCharacters={setCheckedCharacters}
-      />
-    </div>
+    <CharactersContext.Provider
+      value={{
+        starships,
+        setStarships,
+        vehicles,
+        setVehicles,
+        planets,
+        setPlanets,
+        species,
+        setSpecies,
+        characters,
+        setCharacters,
+        originalCharacters,
+        setOriginalCharacters,
+        checkedCharacters,
+        setCheckedCharacters,
+        checkedAll,
+        setCheckedAll
+      }}
+    >
+      <div className="main-wrapper">
+        <h1>Characters</h1>
+        <FilterPanel />
+        <UserList />
+      </div>
+    </CharactersContext.Provider>
   );
 };
 

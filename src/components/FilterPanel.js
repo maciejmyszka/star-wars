@@ -1,23 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { CharactersContext } from "../CharactersContext";
 import delete_icon from "../images/delete_icon.png";
 import deactivate_icon from "../images/negative_icon.png";
 import search_icon from "../images/search_icon.png";
 
-const FilterPanel = ({
-  planets,
-  characters,
-  species,
-  setCharacters,
-  originalCharacters,
-  checkedCharacters,
-  setCheckedCharacters,
-}) => {
+const FilterPanel = () => {
   const [searchInput, setSearchInput] = useState("");
 
-  const searchCharacters = (e) => {
+  const {
+    planets,
+    characters,
+    species,
+    setCharacters,
+    originalCharacters,
+    checkedCharacters,
+    setCheckedCharacters,
+    checkedAll,
+    setCheckedAll,
+  } = useContext(CharactersContext);
+
+  const onChangeSearchCharacters = (e) => {
     e.preventDefault();
     setSearchInput(e.target.value);
-
     if (searchInput.length > 1) {
       setCharacters((characters) =>
         characters.filter((character) =>
@@ -30,7 +34,7 @@ const FilterPanel = ({
   };
 
   const onClickDeactivate = () => {
-    let newCharacters = characters;
+    let newCharacters;
     for (let i = 0; i < checkedCharacters.length; i++) {
       const index = characters.indexOf(checkedCharacters[i]);
       checkedCharacters[i].status = false;
@@ -42,17 +46,24 @@ const FilterPanel = ({
     }
     setCharacters(newCharacters);
     setCheckedCharacters([]);
+    setCheckedAll(false)
   };
 
   const onClickDelete = () => {
     let newCharacters = characters;
-    for (let i = 0; i < checkedCharacters.length; i++) {
-      const index = characters.indexOf(checkedCharacters[i]);
-      checkedCharacters[i].checked = false;
-      newCharacters.splice(index, 1);
+    let emptyArr = [];
+    if (checkedAll) {
+      setCharacters(emptyArr);
+    } else {
+      for (let i = 0; i < checkedCharacters.length; i++) {
+        const index = characters.indexOf(checkedCharacters[i]);
+        checkedCharacters[i].checked = false;
+        newCharacters.splice(index, 1);
+      }
+      setCharacters(newCharacters);
     }
-    setCharacters(newCharacters);
     setCheckedCharacters([]);
+    setCheckedAll(false)
   };
 
   return (
@@ -63,16 +74,14 @@ const FilterPanel = ({
           placeholder="Search"
           className="search"
           value={searchInput}
-          onChange={searchCharacters}
+          onChange={onChangeSearchCharacters}
         />
         <img src={search_icon} alt="search icon" />
         <select className="species" defaultValue={"Species"}>
           <option value="Species" disabled hidden>
             Species
           </option>
-          <option value="Human">
-            Human
-          </option>
+          <option value="Human">Human</option>
           {species.map((species) => (
             <option value={species.name} key={species.created}>
               {species.name}
