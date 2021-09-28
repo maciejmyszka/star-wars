@@ -460,12 +460,6 @@ const App = () => {
 
   const [checkedCharacters, setCheckedCharacters] = useState([]);
 
-  // Do zrobienia:
-  // 1. Poprawienie losowania 2 losowych pojazdów
-  // 2. Responsywność
-  // 3. useContext
-  
-
   return (
     <div className="main-wrapper">
       <h1>Characters</h1>
