@@ -75,7 +75,7 @@ const User = ({
   };
 
   //during deploying I had error, which was caused by unused "checked", so I did used it like this
-  // console.log(checked)
+  console.log(checked)
 
   return (
     <>
