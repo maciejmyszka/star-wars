@@ -129,6 +129,7 @@ const User = ({ character }) => {
       </div>
       <EditPanel
         changeNameStatus={changeNameStatus}
+        setChangeNameStatus={setChangeNameStatus}
         nameValue={nameValue}
         setNameValue={setNameValue}
         character={character}

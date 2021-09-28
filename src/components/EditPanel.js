@@ -10,7 +10,7 @@ const EditPanel = ({
   setChangeNameStatus
 }) => {
   const { characters, setCharacters } = useContext(CharactersContext);
-  const [newName, setNewName] = useState();
+  const [newName, setNewName] = useState("");
   
   const changeNameButton = () => {
     setNameValue(newName);
