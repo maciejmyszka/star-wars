@@ -20,7 +20,6 @@ const User = ({
   const [changeNameStatus, setChangeNameStatus] = useState(false);
   const [nameValue, setNameValue] = useState(character.name);
   const [newName, setNewName] = useState();
-  const [showCharacter, setShowCharacter] = useState(true);
 
   const [checked, setChecked] = useState(character.checked);
 
@@ -44,10 +43,7 @@ const User = ({
   };
 
   const removeButton = () => {
-    let charactersCopy = characters;
-    charactersCopy.splice(index, 1);
-    setCharacters(charactersCopy);
-    setShowCharacter(false);
+    setCharacters(characters.filter(person => person.name !== character.name));
   };
 
   const vehiclesNumber = character.vehicles.length + character.starships.length;
@@ -78,115 +74,109 @@ const User = ({
     checkedCharacters.push(character);
   };
 
-//during deploying I had error, which was caused by unused "checked", so I did used it like this
-  console.log(checked)
+  //during deploying I had error, which was caused by unused "checked", so I did used it like this
+  // console.log(checked)
 
   return (
-    showCharacter && (
-      <>
-        <div
-          className={character.status ? "characterItem" : "characterItem dark"}
-        >
-          <input
-            type="checkbox"
-            checked={character.checked}
-            onChange={() => addToChoosed()}
-          />
-          <div className="name-wrapper">
-            <h2>{nameValue}</h2>
-            <p>
-              {species.map((type) =>
-                type.url === character.species[0] ? type.name : null
+    <>
+      <div
+        className={character.status ? "characterItem" : "characterItem dark"}
+      >
+        <input
+          type="checkbox"
+          checked={character.checked}
+          onChange={() => addToChoosed()}
+        />
+        <div className="name-wrapper">
+          <h2>{nameValue}</h2>
+          <p>
+            {species.map((type) =>
+              type.url === character.species[0] ? type.name : null
+            )}
+            {character.species.length === 0 && "Human"}
+          </p>
+        </div>
+        <p className="birthday">{character.birth_year}</p>
+        <p className="planet">
+          {planets.map((planet) =>
+            planet.url === character.homeworld ? planet.name : null
+          )}
+        </p>
+        {vehiclesNumber <= 2 ? (
+          <div className="starships">
+            <p className="singleVehicle">
+              {vehicles.map((vehicle) =>
+                vehicle.url === character.vehicles[0] ? vehicle.name : null
               )}
-              {character.species.length === 0 && "Human"}
+            </p>
+            <p className="singleVehicle">
+              {starships.map((starship) =>
+                starship.url === character.starships[0] ? starship.name : null
+              )}
             </p>
           </div>
-          <p className="birthday">{character.birth_year}</p>
-          <p className="planet">
-            {planets.map((planet) =>
-              planet.url === character.homeworld ? planet.name : null
-            )}
-          </p>
-          {vehiclesNumber <= 2 ? (
-            <div className="starships">
-              <p className="singleVehicle">
-                {vehicles.map((vehicle) =>
-                  vehicle.url === character.vehicles[0] ? vehicle.name : null
-                )}
-              </p>
-              <p className="singleVehicle">
-                {starships.map((starship) =>
-                  starship.url === character.starships[0] ? starship.name : null
-                )}
-              </p>
-            </div>
-          ) : (
-            <div className="starships">
-              <p className="singleVehicle">
-                {vehicles.map((vehicle) =>
-                  vehicle.url === vehiclesArr[firstNumber] ? vehicle.name : null
-                )}
-                {starships.map((starship) =>
-                  starship.url === vehiclesArr[firstNumber]
-                    ? starship.name
-                    : null
-                )}
-              </p>
-              <p className="singleVehicle">
-                {vehicles.map((vehicle) =>
-                  vehicle.url === vehiclesArr[secondNumber]
-                    ? vehicle.name
-                    : null
-                )}
-                {starships.map((starship) =>
-                  starship.url === vehiclesArr[secondNumber]
-                    ? starship.name
-                    : null
-                )}
-              </p>
-            </div>
-          )}
-          <p className="status">
-            <img src={character.status ? active : deactive} alt="active" />
-            {character.status ? "Active" : "Deactivated"}
-          </p>
-          <div className="actions">
-            <img
-              src={edit}
-              alt="edit"
-              onClick={() => setChangeNameStatus((prevState) => !prevState)}
-            />
-            <img
-              src={more}
-              alt="more"
-              onClick={() => setShowOptions((prevState) => !prevState)}
-            />
+        ) : (
+          <div className="starships">
+            <p className="singleVehicle">
+              {vehicles.map((vehicle) =>
+                vehicle.url === vehiclesArr[firstNumber] ? vehicle.name : null
+              )}
+              {starships.map((starship) =>
+                starship.url === vehiclesArr[firstNumber] ? starship.name : null
+              )}
+            </p>
+            <p className="singleVehicle">
+              {vehicles.map((vehicle) =>
+                vehicle.url === vehiclesArr[secondNumber] ? vehicle.name : null
+              )}
+              {starships.map((starship) =>
+                starship.url === vehiclesArr[secondNumber]
+                  ? starship.name
+                  : null
+              )}
+            </p>
           </div>
+        )}
+        <p className="status">
+          <img src={character.status ? active : deactive} alt="active" />
+          {character.status ? "Active" : "Deactivated"}
+        </p>
+        <div className="actions">
+          <img
+            src={edit}
+            alt="edit"
+            onClick={() => setChangeNameStatus((prevState) => !prevState)}
+          />
+          <img
+            src={more}
+            alt="more"
+            onClick={() => setShowOptions((prevState) => !prevState)}
+          />
         </div>
-        <div className="edit-user">
-          {changeNameStatus && (
-            <div className="change-name">
-              <input
-                type="text"
-                placeholder="Change name"
-                value={newName}
-                onChange={(e) => setNewName(e.target.value)}
-              />
-              <button onClick={() => changeNameButton()}>Change</button>
-            </div>
-          )}
+      </div>
+      <div className="edit-user">
+        {changeNameStatus && (
+          <div className="change-name">
+            <input
+              type="text"
+              placeholder="Change name"
+              value={newName}
+              onChange={(e) => setNewName(e.target.value)}
+            />
+            <button onClick={() => changeNameButton()}>Change</button>
+          </div>
+        )}
 
-          {showOptions && (
-            <ul>
-              <li onClick={() => activateButton()}>
-                {character.status ? "Deactivate" : "Activate"} character
-              </li>
-              <li onClick={() => removeButton()}>Remove character</li>
-            </ul>
-          )}
-        </div>
-      </>
-    )
+        {showOptions && (
+          <ul>
+            <li onClick={() => activateButton()}>
+              {character.status ? "Deactivate" : "Activate"} character
+            </li>
+            <li onClick={() => removeButton()}>Remove character</li>
+          </ul>
+        )}
+      </div>
+    </>
   );
 };
 

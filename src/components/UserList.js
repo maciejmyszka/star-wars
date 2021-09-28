@@ -13,19 +13,25 @@ const UserList = ({
   setCheckedCharacters,
   checkedCharacters,
 }) => {
-  const [pageNumber, setPageNumber] = useState(1);
+  const [pageNumber, setPageNumber] = useState(0);
   const [checkedAll, setCheckedAll] = useState(false);
+  const size = 6;
 
   let arrayOfCharacters = [[]];
-  const size = 6;
   for (let i = 0; i < characters.length; i += size) {
     arrayOfCharacters.push(characters.slice(i, i + size));
   }
 
   let pageNumbersArray = [];
-  for (let i = 1; i < arrayOfCharacters.length; i = i + 1) {
+  for (let i = 0; i < arrayOfCharacters.length - 1; i = i + 1) {
     pageNumbersArray.push(i);
   }
+
+  const setCharactersPages = () => {
+    const startIndex = 0 + 1 * size * pageNumber;
+    const lastIndex = size + 1 * size * pageNumber;
+    return characters.slice(startIndex, lastIndex);
+  };
 
   const onClickCheckedAll = () => {
     setCheckedAll((prevState) => !prevState);
@@ -70,7 +76,7 @@ const UserList = ({
           <h4>Actions</h4>
         </div>
         <ul className="user-list">
-          {characters.map((character, index) => (
+          {setCharactersPages().map((character, index) => (
             <User
               key={character.created}
               character={character}
@@ -89,9 +95,9 @@ const UserList = ({
       </div>
       <div className="pageNumberWrapper">
         <button
-          className={pageNumber === 1 ? "pageNumber active" : "pageNumber"}
+          className={pageNumber === 0 ? "pageNumber active" : "pageNumber"}
           onClick={() => setPageNumber((prevValue) => prevValue - 1)}
-          disabled={pageNumber === 1 ? true : false}
+          disabled={pageNumber === 0 ? true : false}
         >
           <img src={previous_icon} alt="previous icon" />
         </button>
@@ -103,17 +109,17 @@ const UserList = ({
             key={number}
             onClick={() => setPageNumber(number)}
           >
-            {number}
+            {number + 1}
           </button>
         ))}
         <button
           className={
-            pageNumber === arrayOfCharacters.length - 1
+            pageNumber === arrayOfCharacters.length - 2
               ? "pageNumber active"
               : "pageNumber"
           }
           onClick={() => setPageNumber((prevValue) => prevValue + 1)}
-          disabled={pageNumber === arrayOfCharacters.length - 1 ? true : false}
+          disabled={pageNumber === arrayOfCharacters.length - 2 ? true : false}
         >
           <img src={previous_icon} alt="next icon" className="next" />
         </button>

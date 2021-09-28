@@ -18,13 +18,11 @@ const FilterPanel = ({
     e.preventDefault();
     setSearchInput(e.target.value);
 
-    let filteredArr = [];
-
     if (searchInput.length > 1) {
-      characters.filter((character) =>
-        character.name.toLowerCase().includes(searchInput.toLowerCase())
-          ? (filteredArr.push(character), setCharacters(filteredArr))
-          : null
+      setCharacters((characters) =>
+        characters.filter((character) =>
+          character.name.toLowerCase().includes(searchInput.toLowerCase())
+        )
       );
     } else {
       setCharacters(originalCharacters);
@@ -71,6 +69,9 @@ const FilterPanel = ({
         <select className="species" defaultValue={"Species"}>
           <option value="Species" disabled hidden>
             Species
+          </option>
+          <option value="Human">
+            Human
           </option>
           {species.map((species) => (
             <option value={species.name} key={species.created}>
