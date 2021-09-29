@@ -24,15 +24,57 @@ const Pagination = ({ pageNumber, setPageNumber, size }) => {
       >
         <img src={previous_icon} alt="previous icon" />
       </button>
-      {pageNumbersArray.map((number) => (
+
+      {pageNumbersArray.slice(0, 3).map((number) => (
         <button
-          className={pageNumber === number ? "pageNumber active" : "pageNumber"}
           key={number}
+          className={pageNumber === number ? "pageNumber active" : "pageNumber"}
           onClick={() => setPageNumber(number)}
+          style={{
+            display:
+              pageNumber === pageNumbersArray.length ||
+              pageNumber === pageNumbersArray.length - 1 ||
+              pageNumber === pageNumbersArray.length - 2 ||
+              pageNumber === pageNumbersArray.length - 3
+                ? "block"
+                : "none",
+          }}
         >
           {number + 1}
         </button>
       ))}
+
+      {pageNumbersArray.slice(0, pageNumbersArray.length - 3).map((number) => (
+        <button
+          className={pageNumber === number ? "pageNumber active" : "pageNumber"}
+          key={number}
+          onClick={() => setPageNumber(number)}
+          style={{
+            display:
+              number === pageNumber ||
+              number === pageNumber + 1 ||
+              number === pageNumber + 2
+                ? "block"
+                : "none",
+          }}
+        >
+          {number + 1}
+        </button>
+      ))}
+      <p style={{ margin: "0 10px"}}>...</p>
+      {pageNumbersArray
+        .slice(pageNumbersArray.length - 3, pageNumbersArray.length)
+        .map((number) => (
+          <button
+            key={number}
+            className={
+              pageNumber === number ? "pageNumber active" : "pageNumber"
+            }
+            onClick={() => setPageNumber(number)}
+          >
+            {number + 1}
+          </button>
+        ))}
       <button
         className={
           pageNumber === arrayOfCharacters.length - 2
