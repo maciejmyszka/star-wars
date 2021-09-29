@@ -1,0 +1,57 @@
+.edit-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  .change-name {
+    display: flex;
+    align-items: center;
+    min-width: 700px;
+
+    input {
+      margin: 5px 0;
+      padding: 5px 10px;
+      margin-left: 2.7%;
+      border: 1px solid #bac6d8;
+      border-radius: 5px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 14px;
+      width: 27%;
+    }
+
+    button {
+      box-sizing: border-box;
+      font-family: 'Oswald', sans-serif;
+      font-size: 14px;
+      padding: 5px 10px;
+      border: 1px solid #bac6d8;
+    }
+  }
+
+  button {
+    background-color: white;
+    padding: 5px 10px;
+    margin: 0 8px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+    justify-content: flex-end;
+    width: 100%;
+
+    li {
+      background-color: white;
+      padding: 5px 10px;
+      margin: 5px 8px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 5px;
+      border: 1px solid #bac6d8;
+    }
+  }
+}
