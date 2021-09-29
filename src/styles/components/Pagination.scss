@@ -41,7 +41,6 @@
   .pageNumberWrapper {
     margin: 0 45px;
     position: absolute;
-    margin-bottom: 30px;
   }
 }
 
@@ -49,7 +48,6 @@
   .pageNumberWrapper {
     margin: 0 15px;
     position: absolute;
-    margin-bottom: 30px;
   }
 }
 
@@ -57,11 +55,10 @@
   .pageNumberWrapper {
     justify-content: space-between;
     margin: 0px 20px;
-    margin-bottom: 30px;
 
     button {
       min-width: 35px;
-      margin-bottom: 30px !important;
+      margin-bottom: 30px;
     }
 
     button:first-of-type {
@@ -75,12 +72,11 @@
     justify-content: space-between;
     margin: 0px 20px;
     width: 90%;
-    margin-bottom: 50px;
 
     button {
       min-width: 30px;
-      margin: 0 !important;
-      margin-bottom: 30px !important;
+      margin: 0;
+      margin-bottom: 30px;
     }
   }
 }
