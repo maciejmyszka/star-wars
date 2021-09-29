@@ -46,7 +46,7 @@ const User = ({ character }) => {
     } else if (character.checked === false) {
       character.checked = true;
     }
-    checkedCharacters.push(character);
+    setCheckedCharacters(checkedCharacters => checkedCharacters.concat(character))
   };
 
   //during deploying on netlify I had error, which was caused by warning (unused "checked"), so I did used it like this

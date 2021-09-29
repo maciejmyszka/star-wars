@@ -158,14 +158,24 @@ const FilterPanel = () => {
           <option value="true">Active</option>
           <option value="false">Deactivated</option>
         </select>
-        <button className="reset-button"onClick={() => resetFiltersButton()}>Reset filters</button>
+        <button className="reset-button" onClick={() => resetFiltersButton()}>
+          Reset filters
+        </button>
       </div>
       <div className="actions">
-        <button className="deactivateBtn" onClick={() => onClickDeactivate()}>
+        <button
+          className="deactivateBtn"
+          onClick={() => onClickDeactivate()}
+          disabled={checkedCharacters.length === 0 && "true"}
+        >
           <img src={deactivate_icon} alt="deactivate icon" />
           Deactivate characters
         </button>
-        <button className="removeBtn" onClick={() => onClickDelete()}>
+        <button
+          className="removeBtn"
+          onClick={() => onClickDelete()}
+          disabled={checkedCharacters.length === 0 && "true"}
+        >
           <img src={delete_icon} alt="delete icon" />
           Remove characters
         </button>
