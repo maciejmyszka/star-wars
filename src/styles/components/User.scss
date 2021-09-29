@@ -79,3 +79,24 @@
   background: #F6F8FA;
   color: #8C9193;
 }
+
+@media only screen and (max-width: 975px) {
+  .characterItem {
+    .name-wrapper {
+      width: 18%;
+    }
+
+    .starships {
+      width: 21%;
+    }
+  }
+}
+
+@media only screen and (max-width: 865px) {
+  .characterItem {
+    .birthday {
+      width: 13%;;
+    }
+  }
+}
+

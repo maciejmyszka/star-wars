@@ -1,4 +1,3 @@
-import "./App.css";
 import UserList from "./components/UserList";
 import React, { useEffect, useState } from "react";
 import FilterPanel from "./components/FilterPanel";
@@ -10,8 +9,12 @@ const App = () => {
   const [planets, setPlanets] = useState(defaultObject.planets);
   const [species, setSpecies] = useState(defaultObject.species);
   const [characters, setCharacters] = useState(defaultObject.characters);
-  const [originalCharacters, setOriginalCharacters] = useState(defaultObject.originalCharacters);
-  const [checkedCharacters, setCheckedCharacters] = useState(defaultObject.checkedCharacters);
+  const [originalCharacters, setOriginalCharacters] = useState(
+    defaultObject.originalCharacters
+  );
+  const [checkedCharacters, setCheckedCharacters] = useState(
+    defaultObject.checkedCharacters
+  );
   const [checkedAll, setCheckedAll] = useState(defaultObject.checkedAll);
 
   useEffect(() => {
@@ -496,12 +499,14 @@ const App = () => {
         checkedCharacters,
         setCheckedCharacters,
         checkedAll,
-        setCheckedAll
+        setCheckedAll,
       }}
     >
       <div className="main-wrapper">
-        <h1>Characters</h1>
-        <FilterPanel />
+        <div className="top-wrapper">
+          <h1>Characters</h1>
+          <FilterPanel />
+        </div>
         <UserList />
       </div>
     </CharactersContext.Provider>

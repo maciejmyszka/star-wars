@@ -36,3 +36,46 @@
     background-color: #eef1f5;
   }
 }
+
+@media only screen and (max-width: 750px) {
+  .pageNumberWrapper {
+    margin: 0 45px;
+    position: absolute;
+  }
+}
+
+@media only screen and (max-width: 590px) {
+  .pageNumberWrapper {
+    margin: 0 15px;
+    position: absolute;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .pageNumberWrapper {
+    justify-content: space-between;
+    margin: 0px 20px;
+
+    button {
+      min-width: 35px;
+    }
+
+    button:first-of-type {
+      margin-left: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .pageNumberWrapper {
+    justify-content: space-between;
+    margin: 0px 20px;
+    width: 90%;
+
+    button {
+      min-width: 30px;
+      margin: 0 !important;
+    }
+
+  }
+}

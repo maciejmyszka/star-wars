@@ -65,3 +65,60 @@
     margin-top: 0;
   }
 }
+
+@media only screen and (max-width: 975px) {
+  .list-wrapper {
+    .params {
+      .name {
+        width: 18%;
+      }
+
+      .transport {
+        width: 21%;
+      }
+
+      .name,
+      .born,
+      .world,
+      .transport,
+      .status-filter {
+        img {
+          margin-right: 15px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 865px) {
+  .list-wrapper {
+    .params {
+      .born {
+        width: 13%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .list-wrapper {
+    margin-top: 150px;
+    width: 680px;
+    overflow-x: scroll;
+  }
+}
+
+@media only screen and (max-width: 590px) {
+  .list-wrapper {
+    margin: 0 20px;
+    margin-top: 182px;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .list-wrapper {
+    margin-top: 228px;
+  }
+}
+
+
