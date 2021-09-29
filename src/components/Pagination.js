@@ -44,7 +44,7 @@ const Pagination = ({ pageNumber, setPageNumber, size }) => {
         </button>
       ))}
 
-      {pageNumbersArray.slice(0, pageNumbersArray.length - 3).map((number) => (
+      {pageNumbersArray.length !== 2 && pageNumbersArray.slice(0, pageNumbersArray.length - 3).map((number) => (
         <button
           className={pageNumber === number ? "pageNumber active" : "pageNumber"}
           key={number}
@@ -61,8 +61,8 @@ const Pagination = ({ pageNumber, setPageNumber, size }) => {
           {number + 1}
         </button>
       ))}
-      <p style={{ margin: "0 10px"}}>...</p>
-      {pageNumbersArray
+      {pageNumbersArray.length !== 2 && <p style={{ margin: "0 10px"}}>...</p>}
+      {pageNumbersArray.length !== 2 && pageNumbersArray
         .slice(pageNumbersArray.length - 3, pageNumbersArray.length)
         .map((number) => (
           <button
