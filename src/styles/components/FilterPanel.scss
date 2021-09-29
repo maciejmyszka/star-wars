@@ -9,14 +9,16 @@
     position: relative;
 
     input,
-    select {
+    select,
+    button {
       border: 1px solid #bac6d8;
       border-radius: 5px;
       color: #484f53;
-      max-height: 40px;
       font-size: 14px;
       font-weight: 400;
       font-family: "Oswald", sans-serif;
+      height: 40px;
+      box-sizing: border-box;
     }
 
     .search {
@@ -51,6 +53,20 @@
       margin-right: 30px;
       width: 15%;
     }
+
+    .reset-button {
+      background-color: #fff;
+      padding: 5px 30px;
+      border-radius: 3px;
+      cursor: pointer;
+      height: 40px;
+      min-width: 100px;
+      transition: background-color 0.2s;
+    }
+
+    .reset-button:hover {
+      background-color: #eef1f5;
+    }
   }
 
   .actions {
@@ -72,6 +88,8 @@
       cursor: pointer;
       max-height: 40px;
       min-width: 175px;
+      box-sizing: border-box;
+      height: 40px;
 
       img {
         position: absolute;
@@ -93,6 +111,8 @@
       cursor: pointer;
       max-height: 40px;
       min-width: 170px;
+      box-sizing: border-box;
+      height: 40px;
 
       img {
         position: absolute;

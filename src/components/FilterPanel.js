@@ -6,6 +6,9 @@ import search_icon from "../images/search_icon.png";
 
 const FilterPanel = () => {
   const [searchInput, setSearchInput] = useState("");
+  const [selectedSpecies, setSelectedSpecies] = useState("Species");
+  const [selectedHomeworld, setSelectedHomeworld] = useState("Homeworld");
+  const [selectedStatus, setSelectedStatus] = useState("Status");
 
   const {
     planets,
@@ -46,7 +49,7 @@ const FilterPanel = () => {
     }
     setCharacters(newCharacters);
     setCheckedCharacters([]);
-    setCheckedAll(false)
+    setCheckedAll(false);
   };
 
   const onClickDelete = () => {
@@ -63,7 +66,45 @@ const FilterPanel = () => {
       setCharacters(newCharacters);
     }
     setCheckedCharacters([]);
-    setCheckedAll(false)
+    setCheckedAll(false);
+  };
+
+  const onChangeFilterSpecies = (e) => {
+    setSelectedSpecies(e.target.value);
+    let speciesObject = species.filter((type) => type.name === e.target.value);
+    setCharacters(
+      characters.filter(
+        (character) => character.species[0] === speciesObject[0].url
+      )
+    );
+  };
+
+  const onChangeFilterHomeworld = (e) => {
+    setSelectedHomeworld(e.target.value);
+    let homeworldObject = planets.filter(
+      (planet) => planet.name === e.target.value
+    );
+    setCharacters(
+      characters.filter(
+        (character) => character.homeworld === homeworldObject[0].url
+      )
+    );
+  };
+
+  const onChangeFilterStatus = (e) => {
+    setSelectedStatus(e.target.value);
+    let booleanStatus = e.target.value === "true" ? true : false;
+    setCharacters(
+      characters.filter((character) => character.status === booleanStatus)
+    );
+  };
+
+  const resetFiltersButton = () => {
+    setCharacters(originalCharacters);
+    setSelectedSpecies("Species");
+    setSelectedHomeworld("Homeworld");
+    setSelectedStatus("Status");
+    setSearchInput("");
   };
 
   return (
@@ -77,7 +118,11 @@ const FilterPanel = () => {
           onChange={onChangeSearchCharacters}
         />
         <img src={search_icon} alt="search icon" />
-        <select className="species" defaultValue={"Species"}>
+        <select
+          className="species"
+          value={selectedSpecies}
+          onChange={(e) => onChangeFilterSpecies(e)}
+        >
           <option value="Species" disabled hidden>
             Species
           </option>
@@ -88,7 +133,11 @@ const FilterPanel = () => {
             </option>
           ))}
         </select>
-        <select className="homeworld" defaultValue={"Homeworld"}>
+        <select
+          className="homeworld"
+          value={selectedHomeworld}
+          onChange={(e) => onChangeFilterHomeworld(e)}
+        >
           {planets.map((planet) => (
             <option value={planet.name} key={planet.created}>
               {planet.name}
@@ -98,13 +147,18 @@ const FilterPanel = () => {
             Homeworld
           </option>
         </select>
-        <select className="status" defaultValue={"Status"}>
+        <select
+          className="status"
+          value={selectedStatus}
+          onChange={(e) => onChangeFilterStatus(e)}
+        >
           <option value="Status" disabled hidden>
             Status
           </option>
-          <option value="human">Active</option>
-          <option value="robot">Deactivated</option>
+          <option value="true">Active</option>
+          <option value="false">Deactivated</option>
         </select>
+        <button className="reset-button"onClick={() => resetFiltersButton()}>Reset filters</button>
       </div>
       <div className="actions">
         <button className="deactivateBtn" onClick={() => onClickDeactivate()}>

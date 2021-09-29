@@ -49,7 +49,7 @@ const User = ({ character }) => {
     checkedCharacters.push(character);
   };
 
-  //during deploying I had error, which was caused by unused "checked", so I did used it like this
+  //during deploying on netlify I had error, which was caused by warning (unused "checked"), so I did used it like this
   console.log(checked);
 
   return (
@@ -66,7 +66,7 @@ const User = ({ character }) => {
             {species.map((type) =>
               type.url === character.species[0] ? type.name : null
             )}
-            {character.species.length === 0 && "Human"}
+            {character.species.length === 0 && "Unspecified"}
           </p>
         </div>
         <p className="birthday">{character.birth_year}</p>
