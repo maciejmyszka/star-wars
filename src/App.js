@@ -2,6 +2,7 @@ import UserList from "./components/UserList";
 import React, { useEffect, useState } from "react";
 import FilterPanel from "./components/FilterPanel";
 import { CharactersContext, defaultObject } from "./CharactersContext";
+import LoadingPage from "./components/LoadingPage";
 
 const App = () => {
   const [starships, setStarships] = useState(defaultObject.starships);
@@ -18,6 +19,12 @@ const App = () => {
   const [vehiclesCounter, setVehiclesCounter] = useState(1);
   const [starshipsCounter, setStarshipsCounter] = useState(1);
   const [planetsCounter, setPlanetsCounter] = useState(1);
+
+  const [speciesEnd, setSpeciesEnd] = useState(false)
+  const [peopleEnd, setPeopleEnd] = useState(false)
+  const [vehiclesEnd, setVehiclesEnd] = useState(false)
+  const [starshipsEnd, setStarshipsEnd] = useState(false)
+  const [planetsEnd, setPlanetsEnd] = useState(false)
 
   useEffect(() => {
     const fetchPlanetsData = () => {
@@ -42,6 +49,8 @@ const App = () => {
               setPlanets((prevState) => prevState.concat(data.results));
               if (data.next) {
                 setPlanetsCounter((prevValue) => prevValue + 1);
+              } else {
+                setPlanetsEnd(true)
               }
             })
             .catch((error) => console.log(error));
@@ -74,6 +83,8 @@ const App = () => {
               setSpecies((prevState) => prevState.concat(data.results));
               if (data.next) {
                 setSpeciesCounter((prevValue) => prevValue + 1);
+              } else {
+                setSpeciesEnd(true)
               }
             })
             .catch((error) => console.log(error));
@@ -114,6 +125,8 @@ const App = () => {
               );
               if (data.next) {
                 setPeopleCounter((prevValue) => prevValue + 1);
+              } else {
+                setPeopleEnd(true)
               }
             })
             .catch((error) => console.log(error));
@@ -146,6 +159,8 @@ const App = () => {
               setVehicles((prevState) => prevState.concat(data.results));
               if (data.next) {
                 setVehiclesCounter((prevValue) => prevValue + 1);
+              } else {
+                setVehiclesEnd(true)
               }
             })
             .catch((error) => console.log(error));
@@ -178,6 +193,8 @@ const App = () => {
               setStarships((prevState) => prevState.concat(data.results));
               if (data.next) {
                 setStarshipsCounter((prevValue) => prevValue + 1);
+              } else {
+                setStarshipsEnd(true)
               }
             })
             .catch((error) => console.log(error));
@@ -188,7 +205,8 @@ const App = () => {
   }, [starshipsCounter]);
 
   return (
-    <CharactersContext.Provider
+    speciesEnd === true && peopleEnd === true && vehiclesEnd === true && starshipsEnd === true && planetsEnd === true ? (
+      <CharactersContext.Provider
       value={{
         starships,
         setStarships,
@@ -216,6 +234,7 @@ const App = () => {
         <UserList />
       </div>
     </CharactersContext.Provider>
+    ) : <LoadingPage />
   );
 };
 
