@@ -11,14 +11,15 @@
     input,
     select,
     button {
-      border: 1px solid #bac6d8;
+      border: 3px solid #ffe81f;
       border-radius: 5px;
-      color: #484f53;
+      color: white;
       font-size: 14px;
       font-weight: 400;
       font-family: "Oswald", sans-serif;
       height: 40px;
       box-sizing: border-box;
+      background: black;
     }
 
     .search {
@@ -56,17 +57,13 @@
     }
 
     .reset-button {
-      background-color: #fff;
+      background-color: #000;
       padding: 5px 30px;
       border-radius: 3px;
       cursor: pointer;
       height: 40px;
       min-width: 100px;
       transition: background-color 0.2s;
-    }
-
-    .reset-button:hover {
-      background-color: #eef1f5;
     }
   }
 
@@ -76,10 +73,10 @@
     justify-content: flex-end;
 
     .deactivateBtn {
-      background-color: #0088da;
+      background-color: black;
+      border: 2px solid #ffe81f;
       color: white;
       padding: 5px 30px;
-      border: none;
       font-family: "Oswald", sans-serif;
       font-size: 14px;
       font-weight: 400;
@@ -91,22 +88,16 @@
       min-width: 175px;
       box-sizing: border-box;
       height: 40px;
-
-      img {
-        position: absolute;
-        top: 13px;
-        left: 10px;
-      }
     }
 
     .removeBtn {
-      background-color: #bc2626;
+      background-color: black;
+      border: 2px solid #ffe81f;
       color: white;
       padding: 5px 30px;
       font-family: "Oswald", sans-serif;
       font-size: 14px;
       font-weight: 400;
-      border: none;
       border-radius: 5px;
       position: relative;
       cursor: pointer;
@@ -114,12 +105,6 @@
       min-width: 170px;
       box-sizing: border-box;
       height: 40px;
-
-      img {
-        position: absolute;
-        top: 13px;
-        left: 10px;
-      }
     }
   }
 }
@@ -277,10 +262,6 @@
       .removeBtn,
       .deactivateBtn {
         padding: unset;
-
-        img {
-          display: none;
-        }
       }
     }
   }

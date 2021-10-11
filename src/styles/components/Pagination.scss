@@ -5,10 +5,11 @@
   margin: 0 45px;
 
   .pageNumber {
-    background-color: white;
+    color: white;
+    background-color: black;
     font-family: "Oswald", sans-serif;
     font-size: 14px;
-    border: 1px solid #bac6d8;
+    border: 2px solid #ffe81f;
     cursor: pointer;
     margin: 0 5px;
     border-radius: 5px;
@@ -16,7 +17,7 @@
     width: 35px;
     min-height: 35px;
     position: relative;
-    box-shadow: 0px 2px 4px 0px #dde3ec;
+    box-shadow: 0px 2px 4px 0px #ffe81f;
 
     img {
       position: absolute;
@@ -26,6 +27,10 @@
       left: 8px;
     }
 
+    .previous {
+      background-color: black !important;
+    }
+
     .next {
       transform: rotate(180deg);
     }
@@ -33,7 +38,8 @@
 
   .active {
     cursor: unset;
-    background-color: #eef1f5;
+    color: black;
+    background-color: #ffe81f;
   }
 }
 

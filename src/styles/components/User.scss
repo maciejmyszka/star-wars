@@ -2,10 +2,9 @@
   display: flex;
   align-items: center;
   margin: 0;
-  background-color: white;
   height: 76px;
   font-size: 15px;
-  border-bottom: 1px solid #E5EAF0;
+  border-bottom: 1px solid #ffe81f;
 
   input {
     margin-left: 2%;
@@ -21,6 +20,8 @@
     h2 {
       margin: 0;
       font-size: 15px;
+      color: #ffe81f;
+      font-weight: 500;
     }
 
     p {
@@ -35,7 +36,6 @@
 
   .planet {
     width: 15%;
-    color: black !important;
   }
 
   .starships {
@@ -48,7 +48,6 @@
 
   .status {
     width: 15%;
-    color: black !important;
 
     img {
       width: auto;

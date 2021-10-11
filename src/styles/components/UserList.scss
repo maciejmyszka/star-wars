@@ -1,17 +1,18 @@
 .list-wrapper {
   margin: 0 50px;
   margin-top: 2%;
-  box-shadow: 0px 2px 18px 0px #dde3ec;
+  box-shadow: 0px 2px 18px 0px #ffe81f;
+  color: white;
+  background-color: black;
 
   .params {
-    background-color: white;
     display: flex;
     align-items: center;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    color: #484f53;
+    color: #ffe81f;
     font-size: 14px;
-    border-bottom: 1px solid #cbd4e2;
+    border-bottom: 1px solid #ffe81f;
 
     input {
       margin-left: 2%;

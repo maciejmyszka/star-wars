@@ -18,7 +18,7 @@ const Pagination = ({ pageNumber, setPageNumber, size }) => {
   return (
     <div className="pageNumberWrapper">
       <button
-        className={pageNumber === 0 ? "pageNumber active" : "pageNumber"}
+        className="pageNumber"
         onClick={() => setPageNumber((prevValue) => prevValue - 1)}
         disabled={pageNumber === 0 ? true : false}
       >
@@ -61,7 +61,7 @@ const Pagination = ({ pageNumber, setPageNumber, size }) => {
           {number + 1}
         </button>
       ))}
-      {pageNumbersArray.length !== 2 && <p style={{ margin: "0 10px"}}>...</p>}
+      {pageNumbersArray.length !== 2 && <p style={{ margin: "0 10px", color: "white"}}>...</p>}
       {pageNumbersArray.length !== 2 && pageNumbersArray
         .slice(pageNumbersArray.length - 3, pageNumbersArray.length)
         .map((number) => (
@@ -76,11 +76,7 @@ const Pagination = ({ pageNumber, setPageNumber, size }) => {
           </button>
         ))}
       <button
-        className={
-          pageNumber === arrayOfCharacters.length - 2
-            ? "pageNumber active"
-            : "pageNumber"
-        }
+        className="pageNumber"
         onClick={() => setPageNumber((prevValue) => prevValue + 1)}
         disabled={pageNumber === arrayOfCharacters.length - 2 ? true : false}
       >

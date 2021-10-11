@@ -1,7 +1,5 @@
 import React, { useState, useContext } from "react";
 import { CharactersContext } from "../CharactersContext";
-import delete_icon from "../images/delete_icon.png";
-import deactivate_icon from "../images/negative_icon.png";
 import search_icon from "../images/search_icon.png";
 
 const FilterPanel = () => {
@@ -168,7 +166,6 @@ const FilterPanel = () => {
           onClick={() => onClickDeactivate()}
           disabled={checkedCharacters.length === 0 && "true"}
         >
-          <img src={deactivate_icon} alt="deactivate icon" />
           Deactivate characters
         </button>
         <button
@@ -176,7 +173,6 @@ const FilterPanel = () => {
           onClick={() => onClickDelete()}
           disabled={checkedCharacters.length === 0 && "true"}
         >
-          <img src={delete_icon} alt="delete icon" />
           Remove characters
         </button>
       </div>
