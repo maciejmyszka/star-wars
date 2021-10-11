@@ -1,10 +1,15 @@
 .main-wrapper {
   max-width: 1400px;
-  margin: 5% auto;
+  margin: 0 auto;
+  margin-top: 5%;
 
   .logo {
     margin: 0 50px;
     max-width: 94%;
+  }
+
+  .mobile {
+    display: none;
   }
 }
 
@@ -48,9 +53,15 @@
 @media only screen and (max-width: 590px) {
   .main-wrapper {
     margin-bottom: 16%;
-    
+
     .logo {
-      margin: 0px 17px;
+      display: none;
+    }
+
+    .mobile {
+      display: unset;
+      margin: 0 20px;
+      height: auto;
       max-width: 93%;
     }
   }

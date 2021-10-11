@@ -4,6 +4,7 @@ import FilterPanel from "./components/FilterPanel";
 import { CharactersContext, defaultObject } from "./CharactersContext";
 import LoadingPage from "./components/LoadingPage";
 import logo from "./images/starwars_logo.png"
+import logo_mobile from "./images/starwars_logo-mobile.png"
 
 const App = () => {
   const [starships, setStarships] = useState(defaultObject.starships);
@@ -229,6 +230,7 @@ const App = () => {
     >
       <div className="main-wrapper">
         <div className="top-wrapper">
+          <img src={logo_mobile} alt="STAR WARS CHARACTERS LIBRARY" className="mobile" />
           <img src={logo} alt="STAR WARS CHARACTERS LIBRARY" className="logo"/>
           <FilterPanel />
         </div>

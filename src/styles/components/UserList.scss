@@ -116,13 +116,43 @@
 @media only screen and (max-width: 590px) {
   .list-wrapper {
     margin: 0 20px;
-    margin-top: 182px;
+    margin-top: 380px;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .list-wrapper {
+    margin-top: 355px;
+  }
+}
+
+@media only screen and (max-width: 515px) {
+  .list-wrapper {
+    margin-top: 345px;
+  }
+}
+
+@media only screen and (max-width: 470px) {
+  .list-wrapper {
+    margin-top: 330px;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  .list-wrapper {
+    margin-top: 320px;
   }
 }
 
 @media only screen and (max-width: 390px) {
   .list-wrapper {
-    margin-top: 228px;
+    margin-top: 346px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .list-wrapper {
+    margin-top: 329px;
   }
 }
 
