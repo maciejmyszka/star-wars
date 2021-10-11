@@ -1,7 +1,6 @@
 .main-wrapper {
   max-width: 1400px;
   margin: 5% auto;
-  margin-bottom: 16%;
 
   .logo {
     margin: 0 50px;
@@ -48,6 +47,8 @@
 
 @media only screen and (max-width: 590px) {
   .main-wrapper {
+    margin-bottom: 16%;
+    
     .logo {
       margin: 0px 17px;
       max-width: 93%;
