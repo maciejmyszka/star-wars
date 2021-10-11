@@ -205,7 +205,7 @@ const App = () => {
   }, [starshipsCounter]);
 
   return (
-    speciesEnd === true && peopleEnd === true && vehiclesEnd === true && starshipsEnd === true && planetsEnd === true ? (
+    speciesEnd && peopleEnd && vehiclesEnd && starshipsEnd && planetsEnd ? (
       <CharactersContext.Provider
       value={{
         starships,
@@ -228,7 +228,7 @@ const App = () => {
     >
       <div className="main-wrapper">
         <div className="top-wrapper">
-          <h1>Characters</h1>
+          <h1>STARS WARS CHARACTERS LIBRARY</h1>
           <FilterPanel />
         </div>
         <UserList />
