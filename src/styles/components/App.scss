@@ -3,25 +3,34 @@
   margin: 0 auto;
   margin-top: 5%;
 
-  h1 {
-    font-family: "Star Jedi", arial;
-    font-size: 63px;
-    text-shadow: 4px 4px 4px #aaa;
-    font-style: normal;
-    font-weight: 900;
-    line-height: 30px;
-    letter-spacing: 0em;
-    text-align: center;
-    margin: 10px 50px;
-    text-shadow: 1px 1px 0 #ffe81f, -1px 1px 0 #ffe81f, 1px -1px 0 #ffe81f,
-      -1px -1px 0 #ffe81f, 0px 1px 0 #ffe81f, 0px -1px 0 #ffe81f,
-      -1px 0px 0 #ffe81f, 1px 0px 0 #ffe81f, 2px 2px 0 #ffe81f,
-      -2px 2px 0 #ffe81f, 2px -2px 0 #ffe81f, -2px -2px 0 #ffe81f,
-      0px 2px 0 #ffe81f, 0px -2px 0 #ffe81f, -2px 0px 0 #ffe81f,
-      2px 0px 0 #ffe81f, 1px 2px 0 #ffe81f, -1px 2px 0 #ffe81f,
-      1px -2px 0 #ffe81f, -1px -2px 0 #ffe81f, 2px 1px 0 #ffe81f,
-      -2px 1px 0 #ffe81f, 2px -1px 0 #ffe81f, -2px -1px 0 #ffe81f;
-    margin-bottom: 40px;
+  .logo {
+    margin: 0 50px;
+    max-width: 94%;
+  }
+}
+
+@media only screen and (max-width: 1074px) {
+  .main-wrapper {
+    .logo {
+      margin: 0 37px;
+      max-width: 93%;
+    }
+  }
+}
+
+@media only screen and (max-width: 982px) {
+  .main-wrapper {
+    .logo {
+      max-width: 92%;
+    }
+  }
+}
+
+@media only screen and (max-width: 880px) {
+  .main-wrapper {
+    .logo {
+      max-width: 91%;
+    }
   }
 }
 
@@ -39,8 +48,9 @@
 
 @media only screen and (max-width: 590px) {
   .main-wrapper {
-    h1 {
-      margin: 10px 20px;
+    .logo {
+      margin: 0px 17px;
+      max-width: 93%;
     }
   }
 }

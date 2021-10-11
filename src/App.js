@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import FilterPanel from "./components/FilterPanel";
 import { CharactersContext, defaultObject } from "./CharactersContext";
 import LoadingPage from "./components/LoadingPage";
+import logo from "./images/starwars_logo.png"
 
 const App = () => {
   const [starships, setStarships] = useState(defaultObject.starships);
@@ -228,7 +229,7 @@ const App = () => {
     >
       <div className="main-wrapper">
         <div className="top-wrapper">
-          <h1>STARS WARS CHARACTERS LIBRARY</h1>
+          <img src={logo} alt="STAR WARS CHARACTERS LIBRARY" className="logo"/>
           <FilterPanel />
         </div>
         <UserList />
