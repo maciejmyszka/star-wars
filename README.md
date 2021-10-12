@@ -15,3 +15,5 @@
 	b)	Remove character
 		
 8. If more than two vehicles and starships exist for a given character, then show only 2 RANDOM ones	
+
+![image](https://user-images.githubusercontent.com/85109727/136936734-3d0043c8-2be9-4715-9a25-a7cad0e94dec.png)
