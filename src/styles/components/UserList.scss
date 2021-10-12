@@ -67,6 +67,12 @@
   }
 }
 
+@media only screen and (max-width: 1366px) {
+  .list-wrapper {
+    margin-top: 18px;
+  }
+}
+
 @media only screen and (max-width: 975px) {
   .list-wrapper {
     .params {

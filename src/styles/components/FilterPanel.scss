@@ -108,6 +108,12 @@
   }
 }
 
+@media only screen and (max-width: 1366px) {
+  .filters-wrapper {
+    margin-top: 10px;
+  }
+}
+
 @media only screen and (max-width: 1047px) {
   .filters-wrapper {
     flex-wrap: wrap-reverse;
